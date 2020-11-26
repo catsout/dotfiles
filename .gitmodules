@@ -13,3 +13,6 @@
 [submodule "vim/.vim/pack/plugin/start/vim-airline"]
 	path = vim/.vim/pack/plugin/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
+[submodule "zsh/.antigen/bundles/agnoster/agnoster-zsh-theme"]
+	path = zsh/.antigen/bundles/agnoster/agnoster-zsh-theme
+	url = https://github.com/agnoster/agnoster-zsh-theme.git
