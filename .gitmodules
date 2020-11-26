@@ -1,3 +1,15 @@
-[submodule "vim/.vim/pack/plugin"]
-	path = vim/.vim/pack/plugin
-	url = git@github.com:catsout/my-vim-plugins.git
+[submodule "vim/.vim/pack/plugin/start/completor.vim"]
+	path = vim/.vim/pack/plugin/start/completor.vim
+	url = https://github.com/maralla/completor.vim.git
+[submodule "vim/.vim/pack/plugin/start/nerdtree"]
+	path = vim/.vim/pack/plugin/start/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule "vim/.vim/pack/plugin/start/vim-qml"]
+	path = vim/.vim/pack/plugin/start/vim-qml
+	url = https://github.com/peterhoeg/vim-qml.git
+[submodule "vim/.vim/pack/plugin/start/vim-slime"]
+	path = vim/.vim/pack/plugin/start/vim-slime
+	url = https://github.com/jpalardy/vim-slime
+[submodule "vim/.vim/pack/plugin/start/vim-airline"]
+	path = vim/.vim/pack/plugin/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
