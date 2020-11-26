@@ -1,0 +1,3 @@
+[submodule "vim/.vim/pack/plugin"]
+	path = vim/.vim/pack/plugin
+	url = git@github.com:catsout/my-vim-plugins.git
