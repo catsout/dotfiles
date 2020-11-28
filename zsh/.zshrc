@@ -61,4 +61,4 @@ setopt transient_rprompt
 
 # End of lines added by compinstall
 source ~/.sh_aliases
-
+source ~/.profile
