@@ -1,0 +1,13 @@
+[Unit]
+Description=aria2 is a utility for downloading files.
+After=local-fs.target network.target systemd-tmpfiles-setup.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/aria2c --conf-path=%h/.config/aria2/aria2.conf --daemon
+ExecReload=/usr/bin/kill -HUP $MAINPID
+ExecStop=/usr/bin/kill -HUP $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

@@ -1,2 +1,3 @@
 *.log
 *.dat
+/systemd-user/.config/systemd/user/*/
