@@ -1,10 +1,8 @@
 alias poffdisk='udisksctl power-off -b'
 alias dusize='du -h --max-depth=1'
-alias mydnst='sudo iodine -f -P t4st -M 200 141.98.163.4 a.outwusnd.xyz'
 alias getjdk8='PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:$PATH'
 alias passpush='pass git push origin master'
 alias passpull='pass git pull origin master'
-#alias nvr='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0 DXVK_FILTER_DEVICE_NAME=GeForce __GL_SYNC_TO_VBLANK=1'
 alias sedxargs='echo {}|sed'
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 alias iconv_gbk="iconv -f gbk -t utf-8"
@@ -14,3 +12,4 @@ alias glxrun='QT_XCB_GL_INTEGRATION=xcb_glx'
 alias cmakeb='cd build && cmake .. && cd ..'
 alias frun='flatpak run'
 alias vi='vim'
+alias stow='stow -v'
