@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /opt/HMCL
+openjfx='--module-path /usr/share/openjfx/lib --add-modules=javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media,javafx.swing'
+LD_PRELOAD=/usr/local/lib/libprocname.so PROCNAME=hmcl exec java $openjfx -jar ./HMCL.jar
