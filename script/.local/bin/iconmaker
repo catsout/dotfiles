@@ -1,0 +1,14 @@
+#! /bin/bash
+[ "${1##*.}" != "svg" ] || [ ! -f "$1" ] && exit 1
+svgpath=`dirname $1`
+svgname=`basename $1`
+svgname=${svgname%.svg}
+icopath="${HOME}/.local/share/icons/hicolor"
+temp_dir=`mktemp -d`
+echo ${temp_dir}
+for i in '16' '20' '22' '24' '32' '36' '40' '48' '64' '72' '96' '128' '192' '256' '512' ; do
+	ipath="$icopath/${i}x${i}/apps"
+	[ -d "$ipath" ] || mkdir -p "$ipath"
+	convert +antialias -background none ${svgpath}/${svgname}.svg -resize ${i}x${i} ${temp_dir}/${svgname}.png && \
+		cp -f ${temp_dir}/${svgname}.png $ipath
+done
