@@ -1,3 +1,6 @@
 *.log
 *.dat
+*.dir
+*.scale
+*.uuid
 /systemd-user/.config/systemd/user/*/
