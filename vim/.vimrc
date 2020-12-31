@@ -6,7 +6,7 @@ set autoindent
 set smartindent
 set nu
 
-autocmd FileType python,yaml,qml set expandtab
+autocmd FileType python,json,yaml,qml set expandtab
 
 " Tlist 的快捷键
 map <F2> :Tlist <CR>
