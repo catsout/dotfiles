@@ -1,14 +1,10 @@
-#export QSG_RHI=1
-#export QSG_INFO=0
-#export QSG_RHI_BACKEND=vulkan
-#export KDE_DEBUG=1
-#export QT_XCB_GL_INTEGRATION=xcb_egl
 export GST_VAAPI_ALL_DRIVERS=1
+export QT_XCB_GL_INTEGRATION=xcb_egl
 
 #DXVK
-export DXVK_STATE_CACHE_PATH=/home/out/.cache/dxvk
+export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
-export DXVK_LOG_PATH=/home/out/.cache/dxvk
+export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_HUD=fps
 export DXVK_FILTER_DEVICE_NAME="Intel"
 
@@ -31,7 +27,9 @@ export PUB_HOSTED_URL=https://pub.flutter-io.cn
 export MCHRDIR=/opt/chroot
 export PATH="$PATH:/usr/lib/dart/bin"
 
+export WINEPREFIX="${HOME}/.wine"
+export WINEPREFIX2="${HOME}/.wine"
+
 #flatpak
 #export XDG_DATA_DIRS=${XDG_DATA_DIRS}:'/var/lib/flatpak/exports/share'
 #export XDG_DATA_DIRS=${XDG_DATA_DIRS}:'/home/out/.local/share/flatpak/exports/share'
-

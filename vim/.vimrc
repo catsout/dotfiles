@@ -6,7 +6,8 @@ set autoindent
 set smartindent
 set nu
 
-autocmd FileType python,json,yaml,qml set expandtab
+" expandtab
+autocmd FileType python,json,yaml,qml,scheme,markdown set expandtab
 
 " Tlist 的快捷键
 map <F2> :Tlist <CR>
@@ -16,8 +17,15 @@ map <F3> :NERDTreeToggle <CR>
 let NERDTreeWinPos="right"
 let NERDTreeShowBookmarks=1
 
+
 "set lisp
-autocmd FileType scheme set lisp
+function SetLisp()
+	set tabstop=2
+	set softtabstop=2
+	set shiftwidth=2
+	set lisp
+endfunction
+autocmd FileType scheme call SetLisp()
 autocmd BufNewFile *.scm call setline(1, "#!/bin/scheme --script")
 
 "vim-slime

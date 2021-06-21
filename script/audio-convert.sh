@@ -54,7 +54,7 @@ function Convert {
 		#paralle
 		(
 		rm -f "${newfile}_ff"
-		ffmpeg -loglevel warning -i "${path}" ${!outopt} ${commonOpt[@]} "${newfile}_ff" > /dev/null
+		ffmpeg -loglevel warning -i "${path}" '-c:v' 'copy' ${!outopt} ${commonOpt[@]} "${newfile}_ff" > /dev/null
 		mv "${newfile}_ff" "${newfile}" && echo "${newname} -- ok"
 		) &
 
