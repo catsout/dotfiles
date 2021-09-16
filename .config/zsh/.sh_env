@@ -1,0 +1,35 @@
+export GST_VAAPI_ALL_DRIVERS=1
+export QT_XCB_GL_INTEGRATION=xcb_glx
+
+#DXVK
+export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
+#export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
+export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
+#export DXVK_HUD=fps
+export DXVK_FILTER_DEVICE_NAME="Intel"
+
+export PATH=${PATH}:${HOME}/.local/bin 
+export EDITOR='vi'
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+export DEFAULT_USER=`whoami`
+
+export GOPATH=~/.local/share/go
+
+#ANDORID
+export ANDROID_HOME=/opt/android-sdk
+export NDK=$ANDROID_HOME/ndk-bundle
+export PATH=${PATH}:~/Documents/Git/depot_tools 
+export PATH=${PATH}:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+export PATH=${PATH}:/opt/flutter/bin
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+
+export MCHRDIR=/opt/chroot
+export PATH="$PATH:/usr/lib/dart/bin"
+
+export WINEPREFIX="${HOME}/.wine"
+export WINEPREFIX2="${HOME}/.wine"
+
+#flatpak
+#export XDG_DATA_DIRS=${XDG_DATA_DIRS}:'/var/lib/flatpak/exports/share'
+#export XDG_DATA_DIRS=${XDG_DATA_DIRS}:'/home/out/.local/share/flatpak/exports/share'

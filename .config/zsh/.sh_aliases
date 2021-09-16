@@ -1,0 +1,16 @@
+alias poffdisk='udisksctl power-off -b'
+alias dusize='du -h --max-depth=1'
+alias getjdk8='PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:$PATH'
+alias passpush='pass git push origin master'
+alias passpull='pass git pull origin master'
+alias sedxargs='echo {}|sed'
+alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+alias iconv_gbk="iconv -f gbk -t utf-8"
+alias nmpv='nvr mpv --hwdec=vaapi-copy --vo=gpu'
+alias youdl-url='youtube-dl --get-url --get-filename'
+alias glxrun='QT_XCB_GL_INTEGRATION=xcb_glx'
+alias cmakeb='cd build && cmake .. && cd ..'
+alias frun='flatpak run'
+alias vi='vim'
+alias stow='stow -v'
+alias hiostat='iostat -N --human --pretty'
