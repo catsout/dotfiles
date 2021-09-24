@@ -3,6 +3,8 @@ HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=10000
 
+source ~/.config/zsh/.sh_env
+
 setopt appendhistory nomatch
 setopt hist_save_no_dups
 setopt hist_ignore_dups

@@ -1,0 +1,11 @@
+---
+version: "2.1"
+services:
+  frpc:
+    image: snowdreamtech/frpc
+    network_mode: host
+    container_name: frpc
+    volumes:
+      - /etc/frp/shanghai.ini:/etc/frp/frpc.ini
+    restart:
+      always
