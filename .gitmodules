@@ -19,3 +19,6 @@
 [submodule ".vim/pack/plugin/start/indentLine"]
 	path = .vim/pack/plugin/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/pack/plugin/start/vim-systemd-syntax"]
+	path = .vim/pack/plugin/start/vim-systemd-syntax
+	url = https://github.com/wgwoods/vim-systemd-syntax.git
