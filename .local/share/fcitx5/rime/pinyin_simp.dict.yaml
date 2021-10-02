@@ -1,0 +1,39 @@
+# Rime dictionary
+# encoding: utf-8
+
+---
+name: pinyin_simp
+version: "1"
+sort: by_weight
+vocabulary: essay-zh-hans
+
+import_tables:
+  # ----------------------- 字表 ----------------------- #
+  - dicts/8105   # https://github.com/iDvel/The-Table-of-General-Standard-Chinese-Characters
+
+
+  # --------------------- 基础词库 --------------------- #
+  - dicts/sys    # 华宇野风系统词库
+
+
+  # -------------------- 自己添加的 -------------------- #
+  - dicts/ext     # 平时偶尔添加的一些词库
+  - dicts/av      # 著名表演艺术家
+
+
+  # ------------------- 其他扩展词库 ------------------- #
+  # 搜狗网络流行词
+  - dicts/sogou_liuxing
+  # 清华大学开源词库 https://github.com/thunlp/THUOCL ，以下直接从 https://github.com/fkxxyz/rime-cloverpinyin 复制
+  - dicts/THUOCL_animal
+  - dicts/THUOCL_caijing
+  - dicts/THUOCL_car
+  - dicts/THUOCL_chengyu
+  - dicts/THUOCL_diming
+  - dicts/THUOCL_food
+  - dicts/THUOCL_IT
+  - dicts/THUOCL_law
+  - dicts/THUOCL_lishimingren
+  - dicts/THUOCL_medical
+  - dicts/THUOCL_poem
+...
