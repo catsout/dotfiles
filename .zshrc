@@ -3,7 +3,7 @@ HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=10000
 
-source ~/.config/zsh/.sh_env
+source ~/.config/zsh/env
 
 setopt appendhistory nomatch
 setopt hist_save_no_dups
@@ -62,5 +62,5 @@ unset E
 setopt transient_rprompt
 
 # End of lines added by compinstall
-source ~/.config/zsh/.sh_aliases
+source ~/.config/zsh/aliases
 source ~/.profile
