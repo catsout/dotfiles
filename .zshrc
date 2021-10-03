@@ -13,7 +13,7 @@ setopt hist_ignore_space
 setopt rm_star_silent
 bindkey -e
 
-source ~/.config/zsh/.antigenrc
+source ~/.config/zsh/antigenrc
 
 #autoload bashcompinit && bashcompinit
 autoload -U promptinit run-help colors 

@@ -1,24 +1,24 @@
 [submodule ".vim/pack/plugin/start/markdown-preview.nvim"]
-	path = .vim/pack/plugin/start/markdown-preview.nvim
+	path = .config/vim/pack/plugin/start/markdown-preview.nvim
 	url = https://github.com/iamcco/markdown-preview.nvim.git
 [submodule ".vim/pack/plugin/start/vim-slime"]
-	path = .vim/pack/plugin/start/vim-slime
+	path = .config/vim/pack/plugin/start/vim-slime
 	url = https://github.com/jpalardy/vim-slime
 [submodule ".vim/pack/plugin/start/completor.vim"]
-	path = .vim/pack/plugin/start/completor.vim
+	path = .config/vim/pack/plugin/start/completor.vim
 	url = https://github.com/maralla/completor.vim.git
 [submodule ".vim/pack/plugin/start/vim-qml"]
-	path = .vim/pack/plugin/start/vim-qml
+	path = .config/vim/pack/plugin/start/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
 [submodule ".vim/pack/plugin/start/nerdtree"]
-	path = .vim/pack/plugin/start/nerdtree
+	path = .config/vim/pack/plugin/start/nerdtree
 	url = https://github.com/preservim/nerdtree.git
 [submodule ".vim/pack/plugin/start/vim-airline"]
-	path = .vim/pack/plugin/start/vim-airline
+	path = .config/vim/pack/plugin/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline.git
 [submodule ".vim/pack/plugin/start/indentLine"]
-	path = .vim/pack/plugin/start/indentLine
+	path = .config/vim/pack/plugin/start/indentLine
 	url = https://github.com/Yggdroot/indentLine.git
 [submodule ".vim/pack/plugin/start/vim-systemd-syntax"]
-	path = .vim/pack/plugin/start/vim-systemd-syntax
+	path = .config/vim/pack/plugin/start/vim-systemd-syntax
 	url = https://github.com/wgwoods/vim-systemd-syntax.git

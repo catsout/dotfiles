@@ -1,19 +1,20 @@
-export GST_VAAPI_ALL_DRIVERS=1
-export QT_XCB_GL_INTEGRATION=xcb_glx
+#export GST_VAAPI_ALL_DRIVERS=1
+#export QT_XCB_GL_INTEGRATION=xcb_glx
+
+#
+export PATH=${PATH}:${HOME}/.local/bin 
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+export DEFAULT_USER=`whoami`
+export EDITOR='vi'
+export VIMINIT="source ~/.config/vim/vimrc"
+
 
 #DXVK
 export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
 export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
-#export DXVK_HUD=fps
+export DXVK_HUD=fps
 export DXVK_FILTER_DEVICE_NAME="Intel"
-
-export PATH=${PATH}:${HOME}/.local/bin 
-export EDITOR='vi'
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-export DEFAULT_USER=`whoami`
-
-export GOPATH=~/.local/share/go
 
 #ANDORID
 export ANDROID_HOME=/opt/android-sdk
@@ -24,8 +25,12 @@ export PATH=${PATH}:/opt/flutter/bin
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 
-export MCHRDIR=/opt/chroot
-export PATH="$PATH:/usr/lib/dart/bin"
+#Cargo
+export CARGO_HOME=$HOME/.local/share/cargo
+#Go
+export GOPATH=~/.local/share/go
 
-export WINEPREFIX="${HOME}/.wine"
-export WINEPREFIX2="${HOME}/.wine"
+export MCHRDIR=/opt/chroot
+export PATH=$PATH:/usr/lib/dart/bin
+
+export WINEPREFIX=$HOME/.local/share/wine
