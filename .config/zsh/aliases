@@ -13,4 +13,5 @@ alias cmakeb='cd build && cmake .. && cd ..'
 alias frun='flatpak run'
 alias vi='vim'
 alias stow='stow -v'
+alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
 alias hiostat='iostat -N --human --pretty'
