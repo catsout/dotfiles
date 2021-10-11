@@ -4,9 +4,6 @@
 [submodule ".vim/pack/plugin/start/vim-slime"]
 	path = .config/vim/pack/plugin/start/vim-slime
 	url = https://github.com/jpalardy/vim-slime
-[submodule ".vim/pack/plugin/start/completor.vim"]
-	path = .config/vim/pack/plugin/start/completor.vim
-	url = https://github.com/maralla/completor.vim.git
 [submodule ".vim/pack/plugin/start/vim-qml"]
 	path = .config/vim/pack/plugin/start/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
@@ -25,3 +22,7 @@
 [submodule ".config/vim/pack/plugin/start/rust.vim"]
 	path = .config/vim/pack/plugin/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule ".config/vim/pack/plugin/start/coc.nvim"]
+	path = .config/vim/pack/plugin/start/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+	branch = release

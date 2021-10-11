@@ -1,10 +1,15 @@
 #export GST_VAAPI_ALL_DRIVERS=1
 #export QT_XCB_GL_INTEGRATION=xcb_glx
 #XDG
-export XDG_CACHE_HOME=${HOME}/.cache
-export XDG_CONFIG_HOME=${HOME}/.config
-export XDG_DATA_HOME=${HOME}/.local/share
-export XDG_STATE_HOME=${HOME}/.local/state
+
+[ ! $FLATPAK_ID ] || return;
+
+if [ ! $XDG_CONFIG_HOME ]; then
+	export XDG_CACHE_HOME=${HOME}/.cache
+	export XDG_CONFIG_HOME=${HOME}/.config
+	export XDG_DATA_HOME=${HOME}/.local/share
+	export XDG_STATE_HOME=${HOME}/.local/state
+fi
 
 #
 export PATH=${PATH}:${HOME}/.local/bin 
