@@ -31,7 +31,12 @@ function search_pkg {
 }
 
 function show_help {
-	echo help
+	echo "$0  [OPTION]...  NAME" 
+	echo "Default query the version info of package with NAME"
+	echo ""
+	echo "-s <search mode> name,path,filename" 
+	echo "-a <arch>        any,amd64,..." 
+	echo ""
 	return 0
 }
 
@@ -45,7 +50,7 @@ function main {
 	while getopts "h?s:a:" opt; do
 	  case "$opt" in
 		h|\?)
-		  show_help
+		  show_help "$0"
 		  exit 0
 		  ;;
 		s)
@@ -58,7 +63,7 @@ function main {
 	  esac
 	done
 	shift $((OPTIND-1))
-	[ $# -gt 0 ] || { show_help && exit 1; }
+	[ $# -gt 0 ] || { show_help "$0" && exit 1; }
 	if [ $search -eq 1 ];then
 		search_pkg $s_mode $arch $1
 	else
