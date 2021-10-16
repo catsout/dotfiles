@@ -26,3 +26,9 @@
 	path = .config/vim/pack/plugin/start/coc.nvim
 	url = https://github.com/neoclide/coc.nvim.git
 	branch = release
+[submodule ".config/vim/pack/plugin/start/vimtex"]
+	path = .config/vim/pack/plugin/start/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule ".config/vim/pack/plugin/start/vim-clap"]
+	path = .config/vim/pack/plugin/start/vim-clap
+	url = https://github.com/liuchengxu/vim-clap.git
