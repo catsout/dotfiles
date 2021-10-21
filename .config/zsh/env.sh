@@ -1,5 +1,5 @@
 #export GST_VAAPI_ALL_DRIVERS=1
-#export QT_XCB_GL_INTEGRATION=xcb_glx
+export QT_XCB_GL_INTEGRATION=xcb_egl
 #XDG
 
 # export xdg, if not defined
@@ -12,6 +12,8 @@ fi
 
 #vscode
 export VSCODE_PORTABLE=$XDG_DATA_HOME/vscode
+
+export WINEPREFIX=$XDG_DATA_HOME/wine
 
 MY_CACHE_HOME=$HOME/.cache
 MY_CONFIG_HOME=$HOME/.config
@@ -79,5 +81,3 @@ export FFMPEG_DATADIR=$MY_CONFIG_HOME/ffmpeg
 
 export MCHRDIR=/opt/chroot
 export PATH=$PATH:/usr/lib/dart/bin
-
-export WINEPREFIX=$HOME/.local/share/wine
