@@ -1,0 +1,7 @@
+#Use the * to wildcard select any characters to match for the item to be included
+#Use either ! or - characters at the start of the line to exclude an otherwise included item
+
+!/*
+Backup
+Sync
+Documents
