@@ -1,2 +1,2 @@
 ZDOTDIR=$HOME/.config/zsh
-. "/home/out/.local/share/cargo/env"
+. "$HOME/.local/share/cargo/env"
