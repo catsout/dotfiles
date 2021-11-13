@@ -11,9 +11,12 @@ if [ ! $XDG_CONFIG_HOME ]; then
 fi
 
 #vscode
+export FLATPAK_ENABLE_SDK_EXT='*'
 export VSCODE_PORTABLE=$XDG_DATA_HOME/vscode
-
 export WINEPREFIX=$XDG_DATA_HOME/wine
+#java
+export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java -Djavafx.verbose=true -Dprism.verbose=true"
+
 
 MY_CACHE_HOME=$HOME/.cache
 MY_CONFIG_HOME=$HOME/.config
@@ -37,10 +40,10 @@ export WGETRC=$MY_CONFIG_HOME/wgetrc
 #bash
 export BASH_COMPLETION_USER_FILE=$MY_CONFIG_HOME/bash-completion/bash_completion
 
-#java
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot=$MY_CONFIG_HOME/java
 #npm
 export NPM_CONFIG_USERCONFIG=$MY_CONFIG_HOME/npm/npmrc
+export PATH=$PATH:$MY_DATA_HOME/npm/bin
+export NODE_PATH=$MY_DATA_HOME/npm/lib/node_modules
 #docker
 export DOCKER_CONFIG=$MY_CONFIG_HOME/docker
 export MACHINE_STORAGE_PATH=$MY_DATA_HOME/docker-machine

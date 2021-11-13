@@ -34,6 +34,7 @@ autocmd FileType python,json,yaml,qml,scheme,markdown set expandtab
 " 快捷键
 map <F2> :Tlist <CR>
 map <F3> :NERDTreeToggle <CR>
+map <leader>f :Fold <CR> 
 
 
 " coc.nvim
