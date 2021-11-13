@@ -1,0 +1,12 @@
+{
+    "proxies":
+    {
+        "default":
+        {
+            "httpProxy": "socks5h://127.0.0.1:1080",
+            "httpsProxy": "socks5h://127.0.0.1:1080",
+            "noProxy": ""
+        }
+    }
+}
+

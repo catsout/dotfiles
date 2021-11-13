@@ -17,3 +17,4 @@ alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias stow='stow -v'
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
 alias hiostat='iostat -N --human --pretty'
+[ -f /usr/bin/mpv ] || alias mpv='flatpak run io.mpv.Mpv'

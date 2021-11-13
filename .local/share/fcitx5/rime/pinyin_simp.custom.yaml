@@ -29,13 +29,13 @@ patch:
   engine/translators/+:
 #    - table_translator@custom_phrase  # 自定义文本
     - table_translator@melt_eng       # 英文输入
-    - lua_translator@date_translator  # 时间、日期
+ #   - lua_translator@date_translator  # 时间、日期
 
 
   # 符号映射：删除了 Emoji，只保留了一点点的符号映射
-  emoji:
-    opencc_config: emoji.json
-    option_name: emoji
+  #emoji:
+  #  opencc_config: emoji.json
+  #  option_name: emoji
 
 #  # 简繁切换
 #  traditionalize:

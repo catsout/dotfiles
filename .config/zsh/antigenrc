@@ -1,5 +1,5 @@
 export ADOTDIR=${XDG_CONFIG_HOME}/zsh/antigen
-source /usr/share/zsh-antigen/antigen.zsh 
+source ${XDG_CONFIG_HOME}/zsh/antigen.zsh 
 #antigen use oh-my-zsh
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
