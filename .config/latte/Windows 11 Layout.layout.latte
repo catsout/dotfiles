@@ -31,21 +31,29 @@ immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][17][Applets][193][Configuration]
-PreloadWeight=34
+PreloadWeight=0
+
+[Containments][17][Applets][198]
+immutability=1
+plugin=org.kde.kdeconnect
+
+[Containments][17][Applets][199]
+immutability=1
+plugin=org.kde.plasma.manage-inputmethod
 
 [Containments][17][Applets][89]
 immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][17][Applets][89][Configuration]
-PreloadWeight=10
+PreloadWeight=0
 
 [Containments][17][Applets][91]
 immutability=1
 plugin=org.kde.plasma.volume
 
 [Containments][17][Applets][91][Configuration]
-PreloadWeight=67
+PreloadWeight=51
 
 [Containments][17][Applets][91][Configuration][ConfigDialog]
 DialogHeight=558
@@ -59,14 +67,14 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][17][Applets][94][Configuration]
-PreloadWeight=22
+PreloadWeight=6
 
 [Containments][17][Applets][96]
 immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][17][Applets][96][Configuration]
-PreloadWeight=5
+PreloadWeight=0
 
 [Containments][17][ConfigDialog]
 DialogHeight=744
@@ -121,14 +129,19 @@ plugin=org.kde.latte.plasmoid
 PreloadWeight=0
 
 [Containments][19][Applets][170][Configuration][General]
-animationLauncherBouncing=false
+animationNewWindowSliding=false
 animationWindowAddedInGroup=false
 animationWindowInAttention=false
 hoverAction=PreviewWindows
+infoBadgeProminentColorEnabled=true
 isInLatteDock=true
 isPreferredForDroppedLaunchers=false
 launchers59=applications:org.kde.konsole.desktop,applications:org.kde.dolphin.desktop,applications:org.mozilla.firefox.desktop,applications:com.valvesoftware.Steam.desktop,applications:net.cozic.joplin_desktop.desktop,applications:com.visualstudio.code.desktop,applications:org.telegram.desktop.desktop,file:///latte-separator1.desktop
 manualScrollTasksType=Disabled
+showAudioBadge=false
+showOnlyCurrentDesktop=true
+showOnlyCurrentScreen=true
+showWindowsOnlyFromLaunchers=true
 
 [Containments][19][Applets][174]
 immutability=1
@@ -172,7 +185,7 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][19][Applets][185][Configuration]
-PreloadWeight=25
+PreloadWeight=9
 
 [Containments][19][Applets][188]
 immutability=1
@@ -197,7 +210,7 @@ immutability=1
 plugin=org.kde.plasma.systemmonitor
 
 [Containments][19][Applets][192][Configuration]
-PreloadWeight=12
+PreloadWeight=5
 
 [Containments][19][Applets][192][Configuration][Appearance]
 chartFace=org.kde.ksysguard.horizontalbars

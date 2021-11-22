@@ -1,5 +1,5 @@
 alias poffdisk='udisksctl power-off -b'
-alias dusize='du -h --max-depth=1'
+alias dusize='du -h --total --one-file-system --max-depth=1 | sort -h'
 alias getjdk8='PATH=/usr/lib/jvm/java-8-openjdk-amd64/jre/bin:$PATH'
 alias passpush='pass git push origin master'
 alias passpull='pass git pull origin master'
