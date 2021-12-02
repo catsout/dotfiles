@@ -1,6 +1,6 @@
 #!/bin/bash
 IFS=$'\n'
-declare -ra commonOpt=( "-map_metadata" 0 "-id3v2_version" 3 )
+declare -ra commonOpt=( "-map_metadata" 0 "-id3v2_version" 3)
 declare -ra mp3out=( "-c:a" libmp3lame "-qscale:a" 0 -f mp3 )
 declare -ra flacout=( "-c:a" flac "-compression_level" 9 -f flac )
 
@@ -54,12 +54,14 @@ function Convert {
 		#paralle
 		(
 		rm -f "${newfile}_ff"
-		ffmpeg -loglevel warning -i "${path}" '-c:v' 'copy' ${!outopt} ${commonOpt[@]} "${newfile}_ff" > /dev/null
+		ffmpeg -loglevel warning -i "${path}" '-vn' '-c:v' 'copy' ${!outopt} ${commonOpt[@]} "${newfile}_ff" > /dev/null
 		mv "${newfile}_ff" "${newfile}" && echo "${newname} -- ok"
 		) &
 
 		paranum=$((paranum+1))
 	done
+	# wait all paralle
+	wait
 }
 
 Convert $1 "$2" $3 "$4"

@@ -31,6 +31,9 @@ export EDITOR=vi
 export VIMINIT="source $MY_CONFIG_HOME/vim/vimrc"
 export PASSWORD_STORE_DIR=$MY_CONFIG_HOME/password-store
 
+#python
+export PYTHONSTARTUP=$MY_DATA_HOME/python/setup.py
+
 #elinks
 export ELINKS_CONFDIR=$MY_CONFIG_HOME/elinks
 
