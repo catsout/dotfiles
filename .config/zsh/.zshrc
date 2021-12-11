@@ -1,4 +1,3 @@
-source ~/.config/zsh/env.sh
 # Lines configured by zsh-newuser-install
 HISTSIZE=5000
 SAVEHIST=10000

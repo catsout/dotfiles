@@ -1,5 +1,27 @@
+#!/bin/sh
+
+function APPEND_PATH {
+	echo $PATH | grep -oE "(^|:)$mm(:|$)" > /dev/null
+	[ $? -eq 0 ] || export PATH="$PATH:$1"
+}
+function INSERT_PATH {
+	echo $PATH | grep -oE "(^|:)$mm(:|$)" > /dev/null
+	[ $? -eq 0 ] || export PATH="$1:$PATH"
+}
+
+if [ ! -z $ENV_HOME_LOADED ];then
+	return
+else
+	export ENV_HOME_LOADED=1
+fi
+
+if [ ! -z $FLATPAK_ID ];then
+	export PS1="[📦 $FLATPAK_ID \W]\$ "
+fi
+
 #export GST_VAAPI_ALL_DRIVERS=1
 export QT_XCB_GL_INTEGRATION=xcb_egl
+export QT_LOGGING_RULES='xdg-desktop*.debug=true;xdp-kde*.debug=true'
 #XDG
 
 # export xdg, if not defined
@@ -10,13 +32,18 @@ if [ ! $XDG_CONFIG_HOME ]; then
 	export XDG_STATE_HOME=$HOME/.local/state
 fi
 
+mkdir -p $XDG_CONFIG_HOME
+
 #vscode
 export FLATPAK_ENABLE_SDK_EXT='*'
 export VSCODE_PORTABLE=$XDG_DATA_HOME/vscode
-export WINEPREFIX=$XDG_DATA_HOME/wine
+
+#wget
+#export WGETRC=$XDG_CONFIG_HOME/wgetrc
+#[ -e "$WGETRC" ] || touch "$WGETRC" 
+
 #java
 export _JAVA_OPTIONS="-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java -Djavafx.verbose=true -Dprism.verbose=true"
-
 
 MY_CACHE_HOME=$HOME/.cache
 MY_CONFIG_HOME=$HOME/.config
@@ -24,12 +51,15 @@ MY_DATA_HOME=$HOME/.local/share
 MY_STATE_HOME=$HOME/.local/state
 
 #
-export PATH=$PATH:$HOME/.local/bin 
+APPEND_PATH $HOME/.local/bin
 export SSH_KEY_PATH=~/.ssh/rsa_id
 export DEFAULT_USER=`whoami`
 export EDITOR=vi
 export VIMINIT="source $MY_CONFIG_HOME/vim/vimrc"
 export PASSWORD_STORE_DIR=$MY_CONFIG_HOME/password-store
+export WINEPREFIX=$MY_DATA_HOME/wine
+
+#java
 
 #python
 export PYTHONSTARTUP=$MY_DATA_HOME/python/setup.py
@@ -37,15 +67,12 @@ export PYTHONSTARTUP=$MY_DATA_HOME/python/setup.py
 #elinks
 export ELINKS_CONFDIR=$MY_CONFIG_HOME/elinks
 
-#wget
-export WGETRC=$MY_CONFIG_HOME/wgetrc
-
 #bash
 export BASH_COMPLETION_USER_FILE=$MY_CONFIG_HOME/bash-completion/bash_completion
 
 #npm
 export NPM_CONFIG_USERCONFIG=$MY_CONFIG_HOME/npm/npmrc
-export PATH=$PATH:$MY_DATA_HOME/npm/bin
+APPEND_PATH $MY_DATA_HOME/npm/bin
 export NODE_PATH=$MY_DATA_HOME/npm/lib/node_modules
 #docker
 export DOCKER_CONFIG=$MY_CONFIG_HOME/docker
@@ -61,9 +88,11 @@ export DXVK_FILTER_DEVICE_NAME=Intel
 #ANDORID
 export ANDROID_HOME=$MY_DATA_HOME/Android/Sdk
 export NDK=$ANDROID_HOME/ndk-bundle
-export PATH=$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools
+APPEND_PATH $ANDROID_HOME/platform-tools
+APPEND_PATH $ANDROID_HOME/tools
+
 #Flutter
-export PATH=$PATH:/opt/flutter/bin
+APPEND_PATH /opt/flutter/bin
 export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 export PUB_HOSTED_URL=https://pub.flutter-io.cn
 
@@ -74,7 +103,7 @@ export GTK2_RC_FILES=$MY_CONFIG_HOME/gtk-2.0/gtkrc
 #Cargo
 export CARGO_HOME=$MY_DATA_HOME/cargo
 export RUSTUP_HOME=$MY_DATA_HOME/rustup
-export PATH=$PATH:$CARGO_HOME/bin
+APPEND_PATH $CARGO_HOME/bin
 
 #Go
 export GOPATH=$MY_DATA_HOME/go
@@ -86,8 +115,9 @@ export GRADLE_USER_HOME=$MY_DATA_HOME/gradle
 export FFMPEG_DATADIR=$MY_CONFIG_HOME/ffmpeg
 
 export MCHRDIR=/opt/chroot
-export PATH=$PATH:/usr/lib/dart/bin
+#export PATH=$PATH:/usr/lib/dart/bin
 
+#IM
 export INPUT_METHOD=fcitx5
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5

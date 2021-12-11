@@ -1,3 +1,6 @@
+[KFileDialog Settings]
+iconViewIconSize=43
+
 [LatteSettingsDialog]
 downloadWindowSize=980,600
 windowSize=1100,762
