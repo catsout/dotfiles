@@ -16,6 +16,7 @@ calculatorEnabled=true
 desktopsessionsEnabled=true
 katesessionsEnabled=true
 konsoleprofilesEnabled=true
+krunner_systemsettingsEnabled=true
 kwinEnabled=true
 locationsEnabled=true
 org.kde.activities2Enabled=true

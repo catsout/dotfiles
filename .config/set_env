@@ -36,7 +36,6 @@ mkdir -p $XDG_CONFIG_HOME
 
 #vscode
 export FLATPAK_ENABLE_SDK_EXT='*'
-export VSCODE_PORTABLE=$XDG_DATA_HOME/vscode
 
 #wget
 #export WGETRC=$XDG_CONFIG_HOME/wgetrc
@@ -51,13 +50,18 @@ MY_DATA_HOME=$HOME/.local/share
 MY_STATE_HOME=$HOME/.local/state
 
 #
-APPEND_PATH $HOME/.local/bin
+INSERT_PATH $HOME/.local/bin
 export SSH_KEY_PATH=~/.ssh/rsa_id
 export DEFAULT_USER=`whoami`
 export EDITOR=vi
 export VIMINIT="source $MY_CONFIG_HOME/vim/vimrc"
 export PASSWORD_STORE_DIR=$MY_CONFIG_HOME/password-store
 export WINEPREFIX=$MY_DATA_HOME/wine
+
+export XINITRC=$MY_CONFIG_HOME/X11/xinitrc
+export XSERVERRC=$MY_CONFIG_HOME/X11/xserverrc
+
+export XCURSOR_PATH=$MY_DATA_HOME/icons:/usr/share/icons:/run/host/share/icons:/run/host/user-share/icons
 
 #java
 
@@ -83,7 +87,7 @@ export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
 export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
 export DXVK_HUD=fps
-export DXVK_FILTER_DEVICE_NAME=Intel
+#export DXVK_FILTER_DEVICE_NAME=Intel
 
 #ANDORID
 export ANDROID_HOME=$MY_DATA_HOME/Android/Sdk
@@ -113,6 +117,8 @@ export CONAN_USER_HOME=$MY_CONFIG_HOME/conan
 export GRADLE_USER_HOME=$MY_DATA_HOME/gradle
 #FFmpeg
 export FFMPEG_DATADIR=$MY_CONFIG_HOME/ffmpeg
+#nv
+export CUDA_CACHE_PATH=$MY_CONFIG_HOME/nv
 
 export MCHRDIR=/opt/chroot
 #export PATH=$PATH:/usr/lib/dart/bin

@@ -29,13 +29,15 @@ autocmd FileType scheme setlocal ts=2 sts=2 sw=2 lisp
 autocmd BufNewFile *.scm call setline(1, "#!/bin/scheme --script")
 
 " expandtab
-autocmd FileType python,json,yaml,qml,scheme,markdown set expandtab
+autocmd FileType xml,python,json,yaml,qml,scheme,markdown set expandtab
 
 " 快捷键
 map <F2> :Tlist <CR>
 map <F3> :NERDTreeToggle <CR>
 map <leader>f :Fold <CR> 
 
+" indentLine https://github.com/Yggdroot/indentLine/issues/140
+let g:vim_json_conceal = 0
 
 " coc.nvim
 let g:coc_config_home="$XDG_CONFIG_HOME/vim"
