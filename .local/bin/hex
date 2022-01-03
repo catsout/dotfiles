@@ -1,0 +1,10 @@
+#!/bin/bash
+function hex () {
+	while read -r -N1 char
+	do
+		byte=$(printf '%d' "'$char")
+		printf '\\x%02x' "$byte"
+	done
+}
+
+hex

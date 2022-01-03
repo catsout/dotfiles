@@ -1,0 +1,13 @@
+#!/bin/bash
+function xor () {
+	local key=$1
+	while read -r -N1 char
+	do
+		byte=$(printf '%d' "'$char")
+		value=$(printf '%02x' $((byte ^ key)))
+		#printf '\\x%02x' "$value"
+		printf "%b" '\x'$value
+	done
+}
+
+xor $1
