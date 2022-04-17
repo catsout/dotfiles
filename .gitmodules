@@ -38,3 +38,9 @@
 [submodule ".config/vim/pack/plugin/start/vim-gitgutter"]
 	path = .config/vim/pack/plugin/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule ".local/share/fcitx5/git/FluentDark-fcitx5"]
+	path = .local/share/fcitx5/git/FluentDark-fcitx5
+	url = https://github.com/Reverier-Xu/FluentDark-fcitx5.git
+[submodule ".config/vim/pack/plugin/start/vim-boxdraw"]
+	path = .config/vim/pack/plugin/start/vim-boxdraw
+	url = https://github.com/gyim/vim-boxdraw.git

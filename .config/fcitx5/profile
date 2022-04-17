@@ -27,6 +27,6 @@ Name=keyboard-us
 Layout=
 
 [GroupOrder]
-0=cn
-1=Default
+0=Default
+1=cn
 

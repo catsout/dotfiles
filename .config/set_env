@@ -19,6 +19,12 @@ if [ ! -z $FLATPAK_ID ];then
 	export PS1="[📦 $FLATPAK_ID \W]\$ "
 fi
 
+if [ ! -z "$WSL_DISTRO_NAME" ];then
+	source /etc/profile.d/flatpak.sh
+	export QT_QPA_PLATFORM=wayland
+	[[ "$(genie -r)" != "stopped" ]] || genie -i
+fi
+
 #export GST_VAAPI_ALL_DRIVERS=1
 export QT_XCB_GL_INTEGRATION=xcb_egl
 export QT_LOGGING_RULES='xdg-desktop*.debug=true;xdp-kde*.debug=true'
@@ -61,7 +67,7 @@ export WINEPREFIX=$MY_DATA_HOME/wine
 export XINITRC=$MY_CONFIG_HOME/X11/xinitrc
 export XSERVERRC=$MY_CONFIG_HOME/X11/xserverrc
 
-export XCURSOR_PATH=$MY_DATA_HOME/icons:/usr/share/icons:/run/host/share/icons:/run/host/user-share/icons
+#export XCURSOR_PATH=$MY_DATA_HOME/icons:/usr/share/icons:/run/host/share/icons:/run/host/user-share/icons
 
 #java
 
@@ -124,7 +130,6 @@ export MCHRDIR=/opt/chroot
 #export PATH=$PATH:/usr/lib/dart/bin
 
 #IM
-export INPUT_METHOD=fcitx5
-export GTK_IM_MODULE=fcitx5
-export QT_IM_MODULE=fcitx5
-export XMODIFIERS=@im=fcitx5
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
