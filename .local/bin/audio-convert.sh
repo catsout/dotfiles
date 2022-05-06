@@ -2,7 +2,7 @@
 IFS=$'\n'
 declare -ra commonOpt=( "-map_metadata" 0 "-id3v2_version" 3)
 declare -ra mp3out=( "-c:a" libmp3lame "-qscale:a" 0 -f mp3 )
-declare -ra flacout=( "-c:a" flac "-compression_level" 9 -f flac )
+declare -ra flacout=( "-c:a" flac "-sample_fmt" s16 "-compression_level" 9 -f flac )
 
 function Print {
 	for var in "$@"
@@ -33,7 +33,7 @@ function Convert {
 
 		if [ $isCopyOther -eq 1 ];then
 			if [ "${name##*.}" != "$inFmt" ];then
-				cp -v "${path}" "${newdir}/${name}"
+				cp -uv "${path}" "${newdir}/${name}"
 				continue
 			fi
 		fi
