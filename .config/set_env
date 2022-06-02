@@ -69,6 +69,9 @@ export XSERVERRC=$MY_CONFIG_HOME/X11/xserverrc
 
 #export XCURSOR_PATH=$MY_DATA_HOME/icons:/usr/share/icons:/run/host/share/icons:/run/host/user-share/icons
 
+#kde
+export KDEHOME=$MY_CONFIG_HOME/kde
+
 #java
 
 #python
@@ -133,3 +136,8 @@ export MCHRDIR=/opt/chroot
 #export GTK_IM_MODULE=fcitx
 #export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
+if [ -x "$(command -v bat)" ];then
+	export MANPAGER='sh -c "col -bx | bat -pl man --theme=Monokai\ Extended"'
+	export MANROFFOPT='-c'
+fi

@@ -44,3 +44,6 @@
 [submodule ".config/vim/pack/plugin/start/vim-boxdraw"]
 	path = .config/vim/pack/plugin/start/vim-boxdraw
 	url = https://github.com/gyim/vim-boxdraw.git
+[submodule ".config/zsh/zgenom"]
+	path = .config/zsh/zgenom
+	url = https://github.com/jandamm/zgenom.git
