@@ -29,7 +29,7 @@ autocmd FileType scheme setlocal ts=2 sts=2 sw=2 lisp
 autocmd BufNewFile *.scm call setline(1, "#!/bin/scheme --script")
 
 " expandtab
-autocmd FileType xml,python,json,yaml,qml,scheme,markdown set expandtab
+autocmd FileType lua,xml,python,json,yaml,qml,scheme,markdown set expandtab
 
 " 快捷键
 map <F2> :Tlist <CR>

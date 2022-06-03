@@ -59,8 +59,8 @@ MY_STATE_HOME=$HOME/.local/state
 INSERT_PATH $HOME/.local/bin
 export SSH_KEY_PATH=~/.ssh/rsa_id
 export DEFAULT_USER=`whoami`
-export EDITOR=vi
-export VIMINIT="source $MY_CONFIG_HOME/vim/vimrc"
+export EDITOR=nvim
+# export VIMINIT="source $MY_CONFIG_HOME/vim/vimrc"
 export PASSWORD_STORE_DIR=$MY_CONFIG_HOME/password-store
 export WINEPREFIX=$MY_DATA_HOME/wine
 
