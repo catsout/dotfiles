@@ -3,44 +3,8 @@ local silent='silent'
 local expr='expr'
 local nowait='nowait'
 
-local function gen_keymap()
-  local function gen_opts(opts)
-    local _opts = {}
-    for _,k in pairs(opts) do _opts[k] = true end
-    return _opts
-  end
-
-  local function gen_mapkey(mode, map_rhs)
-    return function(lhs, rhs, opts)
-      vim.api.nvim_set_keymap(mode, lhs, map_rhs(rhs), gen_opts(opts))
-    end
-  end
-  local function gen_mapbufkey(mode, map_rhs)
-    return function(lhs, rhs, buf, opts)
-      vim.api.nvim_buf_set_keymap(buf, mode, lhs, map_rhs(rhs), gen_opts(opts))
-    end
-  end
-
-  local to_cmd = function(s) return ':'..s..'<cr>' end
-  local to_lua = function(s) return ':lua '..s..'<cr>' end
-  local function get_mode_map(mode)
-    return {
-      [mode..'cmd'] = gen_mapkey(mode, to_cmd),
-      [mode..'lua'] = gen_mapkey(mode, to_lua),
-      [mode..'cmdbuf'] = gen_mapbufkey(mode, to_cmd),
-      [mode..'luabuf'] = gen_mapbufkey(mode, to_lua)
-    }
-  end
-
-  return vim.tbl_extend('keep',
-    get_mode_map('n'),
-    get_mode_map('i'),
-    get_mode_map('v')
-  )
-end
-
-local kmap = gen_keymap()
-local opts = {noremap, silent}
+local kmap = require('lib.kmap')
+local opts = {noremap}
 
 return  {
   setup = function ()
@@ -51,8 +15,12 @@ return  {
     kmap.nlua('<space>q', 'vim.diagnostic.setloclist()', opts)
 
     -- nvim-tree
-    kmap.ncmd('<C-n>', ':NvimTreeToggle', opts)
-    kmap.ncmd('<leader>', ':NvimTreeRefresh', opts)
+    kmap.ncmd('<C-n>', 'NvimTreeToggle', opts)
+    kmap.ncmd('<leader>r', 'NvimTreeRefresh', opts)
+
+    -- toggleterm
+    kmap.ncmd('<C-t>', '<Cmd>exe v:count1 . "ToggleTerm"', opts)
+    kmap.ncmd('<C-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm"', opts)
   end,
   lsp_bufmap = function (buf)
     -- goto

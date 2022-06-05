@@ -19,15 +19,25 @@ vim.opt.softtabstop     = -1   -- keep same as shiftwidth
 vim.opt.shiftwidth      = 4
 vim.opt.expandtab       = true
 
-require('core.plugins')
-local kmap = require('core.keymaps')
-kmap.setup()
+-- user cmd
+vim.cmd([[
+]])
 
--- configs
-require('configs.treesitter').config()
-require('configs.lsp').config(kmap.lsp_bufmap)
-require('configs.lualine').config()
-require('configs.nvim-tree').config()
+-- plugin and keymap
+local kmap = require('core.keymaps')
+
+local plugin_context = {
+  kmap = kmap
+}
+require('lib.plugin-loader'):loads ({
+  'plugins.lsp',
+  'plugins.treesitter',
+  'plugins.lualine',
+  'plugins.nvim-tree',
+  'plugins.toggleterm'
+}, plugin_context)
+
+kmap.setup()
 
 -- disable some useless standard plugins to save startup time
 -- these features have been better covered by plugins
