@@ -33,7 +33,7 @@ return  {
     -- action
     kmap.nluabuf('<space>rn', 'vim.lsp.buf.rename()', buf, opts)
     -- kmap.nluabuf('<space>ca', 'vim.lsp.buf.code_action()', opts)
-    kmap.nluabuf('<space>f', 'vim.lsp.buf.format()', buf, opts)
+    kmap.nluabuf('<space>f', 'vim.lsp.buf.formatting()', buf, opts)
   end
 }
 

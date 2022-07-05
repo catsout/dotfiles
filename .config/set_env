@@ -96,6 +96,7 @@ export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
 export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
 export DXVK_HUD=fps
+export DXVK_FRAME_RATE=60
 #export DXVK_FILTER_DEVICE_NAME=Intel
 
 #ANDORID

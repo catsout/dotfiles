@@ -34,7 +34,9 @@ require('lib.plugin-loader'):loads ({
   'plugins.treesitter',
   'plugins.lualine',
   'plugins.nvim-tree',
-  'plugins.toggleterm'
+  'plugins.toggleterm',
+  'plugins.vim-qml',
+  'plugins.nftable'
 }, plugin_context)
 
 kmap.setup()

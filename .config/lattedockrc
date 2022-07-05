@@ -1,5 +1,30 @@
+[Action_0]
+Automatic=true
+Description=Youtube Video
+Number of commands=1
+Regexp=youtube\\.com/watch\\?v=|youtu\\.be
+
+[Action_0/Command_0]
+Commandline[$e]=mpv %s
+Description=Play in mpv
+Enabled=true
+Icon=mpv
+Output=0
+
+[ActionsWidget]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAiYAAAACAQAAAQAAAAAAAAAAAAAAAIL/////AAAAgQAAAAAAAAACAAAA+gAAAAEAAAAAAAABLAAAAAEAAAAAAAAD6AAAAACC
+
+[ConfigDialog]
+eDP-1 Height 1920x1080=571
+eDP-1 Width 1920x1080=705
+
+[EditActionDialog]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYYAAAADAAEAAQAAAAAAAAAAAAAAAIL/////AAAAAQAAAAAAAAADAAAAggAAAAEAAAAAAAAAggAAAAEAAAAAAAAAggAAAAEAAAAAAAAD6AAAAACC
+eDP-1 Height 1920x1080=512
+eDP-1 Width 1920x1080=403
+
 [General]
-Number of Actions=0
+Number of Actions=1
 
 [KFileDialog Settings]
 iconViewIconSize=43

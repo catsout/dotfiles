@@ -1,3 +1,3 @@
 #!/bin/bash
 export LANG=zh_CN.UTF-8
-exec flatpak run --parent-pid=1 --parent-share-pids --env=WINEPREFIX="$WINEPREFIX" org.winehq.Wine "$@"
+exec flatpak run --parent-pid=1 --parent-share-pids org.winehq.Wine "$@"

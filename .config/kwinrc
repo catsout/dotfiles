@@ -26,7 +26,6 @@ NightTemperature=4700
 
 [Plugins]
 overviewEnabled=true
-showfpsEnabled=true
 
 [Wayland]
 InputMethod[$e]=$HOME/.local/share/flatpak/exports/share/applications/org.fcitx.Fcitx5.desktop

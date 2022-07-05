@@ -6,7 +6,9 @@ After=network.target
 Type=exec
 Restart=on-abort
 ExecStart=clash -d %h/.config/clash
+LimitNOFILE=65536
 #AmbientCapabilities=CAP_NET_BIND_SERVICE CAP_NET_ADMIN
+Slice=noproxy.slice
 
 [Install]
 WantedBy=default.target
