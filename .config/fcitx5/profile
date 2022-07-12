@@ -27,6 +27,6 @@ Name=pinyin
 Layout=
 
 [GroupOrder]
-0=Default
-1=cn
+0=cn
+1=Default
 
