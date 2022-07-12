@@ -56,10 +56,12 @@ MY_DATA_HOME=$HOME/.local/share
 MY_STATE_HOME=$HOME/.local/state
 
 #
+APPEND_PATH /etc/ostree-bin
 INSERT_PATH $HOME/.local/bin
 export SSH_KEY_PATH=~/.ssh/rsa_id
 export DEFAULT_USER=`whoami`
 export EDITOR=nvim
+export SYSTEMD_EDITOR=nvim
 # export VIMINIT="source $MY_CONFIG_HOME/vim/vimrc"
 export PASSWORD_STORE_DIR=$MY_CONFIG_HOME/password-store
 export WINEPREFIX=$MY_DATA_HOME/wine

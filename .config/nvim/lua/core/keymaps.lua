@@ -1,13 +1,13 @@
-local noremap='noremap'
-local silent='silent'
-local expr='expr'
-local nowait='nowait'
+local noremap = 'noremap'
+local silent = 'silent'
+local expr = 'expr'
+local nowait = 'nowait'
 
 local kmap = require('lib.kmap')
-local opts = {noremap}
+local opts = { noremap }
 
-return  {
-  setup = function ()
+return {
+  setup = function()
     -- lsp
     kmap.nlua('<space>e', 'vim.diagnostic.open_float()', opts)
     kmap.nlua('[d', 'vim.diagnostic.goto_prev()', opts)
@@ -21,19 +21,41 @@ return  {
     -- toggleterm
     kmap.ncmd('<C-t>', '<Cmd>exe v:count1 . "ToggleTerm"', opts)
     kmap.ncmd('<C-t>', '<Esc><Cmd>exe v:count1 . "ToggleTerm"', opts)
-  end,
-  lsp_bufmap = function (buf)
-    -- goto
-    kmap.nluabuf('gD', 'vim.lsp.buf.declaration()', buf, opts)
-    kmap.nluabuf('gD', 'vim.lsp.buf.definition()', buf, opts)
-    kmap.nluabuf('gr', 'vim.lsp.buf.references()', buf, opts)
 
-    kmap.nluabuf('<C-k>', 'vim.lsp.buf.signature_help()', buf, opts)
+    -- packer compile
+    kmap.ncmd('<leader>c', 'PackerCompile', opts)
+  end,
+  lsp_bufmap = function(buf)
+    -- goto
+    kmap.nlua('gD', 'vim.lsp.buf.declaration()', opts, buf)
+    kmap.nlua('gD', 'vim.lsp.buf.definition()', opts, buf)
+    kmap.nlua('gr', 'vim.lsp.buf.references()', opts, buf)
+
+    kmap.nlua('<C-k>', 'vim.lsp.buf.signature_help()', opts, buf)
 
     -- action
-    kmap.nluabuf('<space>rn', 'vim.lsp.buf.rename()', buf, opts)
+    kmap.nlua('<space>rn', 'vim.lsp.buf.rename()', opts, buf)
     -- kmap.nluabuf('<space>ca', 'vim.lsp.buf.code_action()', opts)
-    kmap.nluabuf('<space>f', 'vim.lsp.buf.formatting()', buf, opts)
+    kmap.nlua('<space>f', 'vim.lsp.buf.formatting()', opts, buf)
+  end,
+  gitsigns_bufmap = function(buf, gs)
+    kmap.nraw(']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr, noremap}, buf)
+
+    kmap.nraw('[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr, noremap}, buf)
+
+    kmap.nvcmd('<leader>hs', 'Gitsigns stage_hunk', opts, buf)
+    kmap.nvcmd('<leader>hr', 'Gitsigns reset_hunk', opts, buf)
+    kmap.ncmd('<leader>hu', 'Gitsigns undo_stage_hunk', opts, buf)
+    kmap.ncmd('<leader>hp', 'Gitsigns preview_hunk', opts, buf)
+    kmap.ncmd('<leader>hd', 'Gitsigns diffthis', opts, buf)
   end
 }
 

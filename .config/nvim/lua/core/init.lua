@@ -8,6 +8,7 @@ vim.opt.shiftround      = true
 vim.opt.updatetime      = 100
 vim.opt.cursorline      = true
 vim.opt.autowrite       = true
+vim.opt.smartcase       = true
 
 -- auto indent, other auto-intend-method is used through builin indent plugin
 vim.opt.autoindent      = false -- uses the indent from the previous line
@@ -36,7 +37,8 @@ require('lib.plugin-loader'):loads ({
   'plugins.nvim-tree',
   'plugins.toggleterm',
   'plugins.vim-qml',
-  'plugins.nftable'
+  'plugins.nftable',
+  'plugins.gitsigns'
 }, plugin_context)
 
 kmap.setup()
