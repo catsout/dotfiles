@@ -8,6 +8,7 @@ vim.opt.shiftround      = true
 vim.opt.updatetime      = 100
 vim.opt.cursorline      = true
 vim.opt.autowrite       = true
+vim.opt.ignorecase      = true
 vim.opt.smartcase       = true
 
 -- auto indent, other auto-intend-method is used through builin indent plugin

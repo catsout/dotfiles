@@ -71,6 +71,8 @@ export XSERVERRC=$MY_CONFIG_HOME/X11/xserverrc
 
 #export XCURSOR_PATH=$MY_DATA_HOME/icons:/usr/share/icons:/run/host/share/icons:/run/host/user-share/icons
 
+export GDBHISTFILE=$MY_DATA_HOME/gdb/history
+
 #kde
 export KDEHOME=$MY_CONFIG_HOME/kde
 
@@ -97,7 +99,7 @@ export MACHINE_STORAGE_PATH=$MY_DATA_HOME/docker-machine
 export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
 export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
-export DXVK_HUD=fps
+#export DXVK_HUD=fps
 export DXVK_FRAME_RATE=60
 #export DXVK_FILTER_DEVICE_NAME=Intel
 
@@ -123,6 +125,9 @@ APPEND_PATH $CARGO_HOME/bin
 
 #Go
 export GOPATH=$MY_DATA_HOME/go
+export GOROOT=$GOPATH/sdk
+APPEND_PATH $GOPATH/bin
+
 #conan
 export CONAN_USER_HOME=$MY_CONFIG_HOME/conan
 #Gradle

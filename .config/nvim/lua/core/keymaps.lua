@@ -28,8 +28,9 @@ return {
   lsp_bufmap = function(buf)
     -- goto
     kmap.nlua('gD', 'vim.lsp.buf.declaration()', opts, buf)
-    kmap.nlua('gD', 'vim.lsp.buf.definition()', opts, buf)
+    kmap.nlua('gd', 'vim.lsp.buf.definition()', opts, buf)
     kmap.nlua('gr', 'vim.lsp.buf.references()', opts, buf)
+    kmap.nraw('K', vim.lsp.buf.hover, opts, buf)
 
     kmap.nlua('<C-k>', 'vim.lsp.buf.signature_help()', opts, buf)
 
