@@ -48,5 +48,5 @@
 	path = .config/zsh/zgenom
 	url = https://github.com/jandamm/zgenom.git
 [submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
-	path = .local/share/nvim/site/pack/packer/start/packer.nvim
+	path = .var/app/io.neovim.nvim/data/nvim/site/pack/packer/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim.git

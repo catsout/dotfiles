@@ -1,4 +1,5 @@
 vim.cmd [[packadd packer.nvim]]
+
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager
 
@@ -14,7 +15,8 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
+  },
+  config = {
+    compile_path = vim.fn.stdpath('cache') .. '/packer_compiled.lua'
   }
-
-
 end)

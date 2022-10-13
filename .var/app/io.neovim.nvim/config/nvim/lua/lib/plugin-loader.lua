@@ -1,6 +1,9 @@
 local PluginLoader = {}
 
 function PluginLoader:init()
+  local ver_runtime = vim.fn.stdpath('config') .. '/ver/' .. vim.version().major .. vim.version().minor
+  vim.opt.runtimepath:append(ver_runtime)
+
   vim.cmd("packadd packer.nvim")
   self.packer = require('packer')
   self.packer.init {
@@ -8,7 +11,8 @@ function PluginLoader:init()
       open_fn = function()
         return require('packer.util').float({ border = 'single' })
       end
-    }
+    },
+    compile_path = ver_runtime .. '/plugin/packer_compiled.lua'
   }
 
   return self
@@ -21,12 +25,13 @@ function PluginLoader:loads(m_pathes, context)
     use 'wbthomason/packer.nvim'
 
     for _,m in ipairs(m_objs) do
-      use(m.register())
+      use(m.register(context))
     end
   end)
 
+  -- load non lazy setup
   for _,m in ipairs(m_objs) do
-    if m.config then m.config(context) end
+    if m.setup then m.setup(context) end
   end
 
   return self

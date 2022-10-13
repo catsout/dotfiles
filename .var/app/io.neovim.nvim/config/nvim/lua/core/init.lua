@@ -21,6 +21,9 @@ vim.opt.softtabstop     = -1   -- keep same as shiftwidth
 vim.opt.shiftwidth      = 4
 vim.opt.expandtab       = true
 
+-- theme
+vim.opt.background      = 'dark'
+
 -- user cmd
 vim.cmd([[
 ]])
@@ -29,10 +32,17 @@ vim.cmd([[
 local kmap = require('core.keymaps')
 
 local plugin_context = {
-  kmap = kmap
+  kmap = kmap,
+  color = {
+    plugin_loc = 'plugins.color.nightfox'
+    -- plugin = '', set by
+  }
 }
+
 require('lib.plugin-loader'):loads ({
+  plugin_context.color.plugin_loc,
   'plugins.lsp',
+  'plugins.nvim-cmp',
   'plugins.treesitter',
   'plugins.lualine',
   'plugins.nvim-tree',

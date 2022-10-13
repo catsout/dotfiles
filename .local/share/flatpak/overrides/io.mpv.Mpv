@@ -1,2 +1,1 @@
-[Context]
-filesystems=xdg-config/mpv:create
+[Session Bus Policy]

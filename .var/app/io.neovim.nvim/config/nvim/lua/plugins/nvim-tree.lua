@@ -1,6 +1,6 @@
 local M = {}
 
-function M.config()
+function M.setup()
   require('nvim-tree').setup {}
 end
 

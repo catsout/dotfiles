@@ -1,6 +1,6 @@
 [Appearance]
 BoldIntense=true
-ColorScheme=Otto
+ColorScheme=nightfox
 Font=Consolas,12,-1,5,50,0,0,0,0,0
 UseFontLineChararacters=false
 
