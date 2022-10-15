@@ -1,8 +1,13 @@
 local PluginLoader = {}
+local utils = require('lib.utils')
+
+---@class Plugin
+---@field name   string
+---@field keymap table
+---@field module string
 
 function PluginLoader:init()
-  local ver_runtime = vim.fn.stdpath('config') .. '/ver/' .. vim.version().major .. vim.version().minor
-  vim.opt.runtimepath:append(ver_runtime)
+  vim.opt.runtimepath:append(utils.ver_runtime())
 
   vim.cmd("packadd packer.nvim")
   self.packer = require('packer')
@@ -12,26 +17,26 @@ function PluginLoader:init()
         return require('packer.util').float({ border = 'single' })
       end
     },
-    compile_path = ver_runtime .. '/plugin/packer_compiled.lua'
+    compile_path = utils.ver_runtime() .. '/plugin/packer_compiled.lua'
   }
 
   return self
 end
 
-function PluginLoader:loads(m_pathes, context)
-  local m_objs = vim.tbl_map(function(p) return require(p) end, m_pathes)
-  -- require lazy load
-  self.packer.startup(function (use)
+function PluginLoader:loads(plugs_info)
+  -- lazy load
+  self.packer.startup(function(use)
     use 'wbthomason/packer.nvim'
 
-    for _,m in ipairs(m_objs) do
-      use(m.register(context))
+    for _, p_info in pairs(plugs_info) do
+      use(require(p_info.module).register(p_info))
     end
   end)
 
-  -- load non lazy setup
-  for _,m in ipairs(m_objs) do
-    if m.setup then m.setup(context) end
+  -- non lazy setup
+  for _, p_info in pairs(plugs_info) do
+    local m = require(p_info.module)
+    if m.setup then m.setup(p_info) end
   end
 
   return self

@@ -1,13 +1,57 @@
 local M = {}
 
-function M.register()
-  return {
-    'lewis6991/gitsigns.nvim',
+---@class Plugin.gitsigns.keymap
+---@field next_diff Array<string>
+---@field prev_diff       Array<string>
+---@field stage_hunk      Array<string>
+---@field stage_hunk_undo Array<string>
+---@field reset_hunk      Array<string>
+---@field preview_hunk    Array<string>
+---@field diff_file       Array<string>
 
-    config = function ()
-      require('gitsigns').setup {
+function M.info()
+  return {
+    name = 'gitsigns.nvim',
+    ---@type Plugin.gitsigns.keymap
+    keymap = {},
+    module = 'plugins.gitsigns',
+    fullname = 'lewis6991/gitsigns.nvim',
+  }
+end
+
+function M.register(info)
+  require('lib.kmap').dump_cfg(info.module, info.keymap)
+
+  return {
+    info.fullname,
+
+    config = function()
+      local kmap = require('lib.kmap').domap
+      ---@type Plugin.gitsigns.keymap | nil
+      local keys = require('lib.kmap').load_cfg('plugins.gitsigns')
+      local gs = require('gitsigns')
+
+      gs.setup {
         on_attach = function(buf)
-          require('core.keymaps').gitsigns_bufmap(buf, package.loaded.gitsigns);
+          if not keys then return end
+          local opts = { 'noremap' }
+          kmap.nraw(keys.next_diff, function()
+            if vim.wo.diff then return ']c' end
+            vim.schedule(function() gs.next_hunk() end)
+            return '<Ignore>'
+          end, { 'expr', 'noremap' }, buf)
+
+          kmap.nraw(keys.prev_diff, function()
+            if vim.wo.diff then return '[c' end
+            vim.schedule(function() gs.prev_hunk() end)
+            return '<Ignore>'
+          end, { 'expr', 'noremap' }, buf)
+
+          kmap.nvcmd(keys.stage_hunk, 'Gitsigns stage_hunk', opts, buf)
+          kmap.nvcmd(keys.reset_hunk, 'Gitsigns reset_hunk', opts, buf)
+          kmap.ncmd(keys.stage_hunk_undo, 'Gitsigns undo_stage_hunk', opts, buf)
+          kmap.ncmd(keys.preview_hunk, 'Gitsigns preview_hunk', opts, buf)
+          kmap.ncmd(keys.diff_file, 'Gitsigns diffthis', opts, buf)
         end
       }
     end

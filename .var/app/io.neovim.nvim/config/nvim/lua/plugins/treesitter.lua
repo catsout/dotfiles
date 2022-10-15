@@ -1,4 +1,12 @@
 local M = {}
+
+function M.info()
+  return {
+    name = 'nvim-treesitter',
+    module = 'plugins.treesitter'
+  }
+end
+
 function M.register()
   return {
     'nvim-treesitter/nvim-treesitter',

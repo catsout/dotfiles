@@ -1,5 +1,14 @@
 local M = {}
 
+
+function M.info()
+  return {
+    name = 'toggleterm.nvim',
+    module = 'plugins.toggleterm'
+  }
+end
+
+
 function M.register()
   return {
     'akinsho/toggleterm.nvim',

@@ -1,8 +1,22 @@
 local M = {}
+local utils = require('lib.utils')
 
-function M.register()
+---@class Plugin.nvim-cmp.keymap
+---@field scroll_forward Array<string>
+---@field scroll_back    Array<string>
+---@field abort          Array<string>
+---@field confirm        Array<string>
+---@field complete       Array<string>
+---@field next_item      Array<string>
+---@field prev_item      Array<string>
+
+function M.info()
   return {
-    'hrsh7th/nvim-cmp',
+    name = 'nvim-cmp',
+    ---@type Plugin.nvim-cmp.keymap
+    keymap = {},
+    module = 'plugins.nvim-cmp',
+    fullname = 'hrsh7th/nvim-cmp',
     requires = {
       'hrsh7th/vim-vsnip',
       'hrsh7th/cmp-cmdline',
@@ -10,8 +24,52 @@ function M.register()
       'hrsh7th/cmp-path',
     },
     after = 'nvim-lspconfig',
+  }
+end
+
+function M.register(info)
+  require('lib.kmap').dump_cfg(info.module, info.keymap)
+  return {
+    info.fullname,
+    requires = info.requires,
+    after = info.after,
     config = function()
       local cmp = require('cmp');
+      local utils = require('lib.utils')
+
+      local gen_mapping = function(keymap)
+        local maps = {}
+
+        local domap = function(keys, mapping)
+          if not keys then return end
+          for _, k in ipairs(keys) do
+            maps[k] = mapping
+          end
+        end
+
+        if keymap then
+          domap(keymap.scroll_forward, cmp.mapping.scroll_docs(4))
+          domap(keymap.scroll_back, cmp.mapping.scroll_docs(-4))
+          domap(keymap.abort, cmp.mapping.abort())
+          domap(keymap.complete, cmp.mapping.complete())
+          domap(keymap.next_item, cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }))
+          domap(keymap.prev_item, cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }))
+        end
+        return maps
+      end
+
       cmp.setup {
         snippet = {
           -- REQUIRED - you must specify a snippet engine
@@ -20,29 +78,9 @@ function M.register()
             -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
-        mapping = cmp.mapping.preset.insert({
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-          },
-          ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-          ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            else
-              fallback()
-            end
-          end, { 'i', 's' }),
-        }),
+        mapping = cmp.mapping.preset.insert(
+          gen_mapping(require('lib.kmap').load_cfg('plugins.nvim-cmp'))
+        ),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
           { name = 'vsnip' },
@@ -53,17 +91,6 @@ function M.register()
         }, {
           { name = 'buffer' }
         }),
-        enabled = function()
-          -- disable completion in comments
-          local context = require 'cmp.config.context'
-          -- keep command mode completion enabled when cursor is in a comment
-          if vim.api.nvim_get_mode().mode == 'c' then
-            return true
-          else
-            return not context.in_treesitter_capture("comment")
-                and not context.in_syntax_group("Comment")
-          end
-        end
       }
 
       cmp.setup.cmdline({ '/', '?' }, {

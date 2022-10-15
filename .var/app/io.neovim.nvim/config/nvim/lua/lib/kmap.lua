@@ -6,9 +6,13 @@ local function gen_keymap()
     return _opts
   end
 
-  local function gen_mapkey(mode, map_rhs)
+  local function gen_setkey_func(mode, map_rhs)
     return function(lhs, rhs, opts, buf)
-      vim.keymap.set(mode, lhs, map_rhs(rhs), gen_opts(opts, buf))
+      if not lhs then return end
+      if not vim.tbl_islist(lhs) then lhs = { lhs } end
+      for _, l in ipairs(lhs) do
+        vim.keymap.set(mode, l, map_rhs(rhs), gen_opts(opts, buf))
+      end
     end
   end
 
@@ -23,7 +27,7 @@ local function gen_keymap()
         mode:gsub('.', function(c)
           table.insert(_mode, c)
         end)
-        return gen_mapkey(_mode, v)
+        return gen_setkey_func(_mode, v)
       end,
       {
         [mode .. 'cmd'] = to_cmd,
@@ -41,4 +45,24 @@ local function gen_keymap()
   )
 end
 
-return gen_keymap()
+local M = {}
+local utils = require('lib.utils')
+
+local keymap_path = vim.fn.stdpath('cache') .. '/keymap/'
+
+M.domap = gen_keymap()
+
+
+---@param name string
+---@param maps table<string, Array<string>>
+function M.dump_cfg(name, maps)
+  utils.mpack_dump(keymap_path .. name, maps)
+end
+
+---@param name string
+---@return table<string, Array<string>> | nil
+function M.load_cfg(name)
+  return utils.mpack_load(keymap_path .. name)
+end
+
+return M
