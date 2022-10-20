@@ -25,6 +25,11 @@ if [ ! -z "$WSL_DISTRO_NAME" ];then
 	[[ "$(genie -r)" != "stopped" ]] || genie -i
 fi
 
+NIX_SH=$HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -e "$NIX_SH"];then
+    . "$NIX_SH"
+fi
+
 #export GST_VAAPI_ALL_DRIVERS=1
 export QT_XCB_GL_INTEGRATION=xcb_egl
 export QT_LOGGING_RULES='xdg-desktop*.debug=true;xdp-kde*.debug=true'
@@ -70,6 +75,8 @@ export XINITRC=$MY_CONFIG_HOME/X11/xinitrc
 export XSERVERRC=$MY_CONFIG_HOME/X11/xserverrc
 
 #export XCURSOR_PATH=$MY_DATA_HOME/icons:/usr/share/icons:/run/host/share/icons:/run/host/user-share/icons
+
+export LESSHISTFILE="$MY_STATE_HOME"/less/history
 
 export GDBHISTFILE=$MY_DATA_HOME/gdb/history
 
@@ -121,7 +128,7 @@ export GTK2_RC_FILES=$MY_CONFIG_HOME/gtk-2.0/gtkrc
 #Cargo
 export CARGO_HOME=$MY_DATA_HOME/cargo
 export RUSTUP_HOME=$MY_DATA_HOME/rustup
-APPEND_PATH $CARGO_HOME/bin
+# APPEND_PATH $CARGO_HOME/bin
 
 #Go
 export GOPATH=$MY_DATA_HOME/go
@@ -149,3 +156,6 @@ if [ -x "$(command -v bat)" ];then
 	export MANPAGER='sh -c "col -bx | bat -pl man --theme=Monokai\ Extended"'
 	export MANROFFOPT='-c'
 fi
+
+export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"

@@ -8,6 +8,7 @@ local M = {}
 ---@field help        Array<string>
 ---@field rename      Array<string>
 ---@field formatting  Array<string>
+---@field implementation Array<string>
 
 
 function M.info()
@@ -20,7 +21,6 @@ function M.info()
     requires = {
       'hrsh7th/cmp-nvim-lsp',
       'williamboman/nvim-lsp-installer'
-      --      {'ms-jpq/coq.thirdparty'}
     },
 
   }
@@ -34,26 +34,39 @@ function M.register(info)
     requires = info.requires,
 
     config = function()
-      local servers = { 'clangd', 'sumneko_lua', 'cmake', 'pyright' }
-      local settings = {
+      local utils = require('lib.utils')
+      local servers = { 'clangd', 'sumneko_lua', 'cmake', 'pyright', 'yamlls', 'nil_ls' }
+      local cfgs = {
         sumneko_lua = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT',
-            },
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-            },
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-              enable = false,
+          settings = {
+            Lua = {
+              runtime = {
+                version = 'LuaJIT',
+              },
+              diagnostics = {
+                globals = { 'vim' },
+              },
+              workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              -- Do not send telemetry data containing a randomized but unique identifier
+              telemetry = {
+                enable = false,
+              },
             },
           },
         },
+
+        yamlls = {
+          settings = {
+            redhat = {
+              telemetry = {
+                enabled = false
+              }
+            }
+          }
+        }
       }
 
       require('nvim-lsp-installer').setup {
@@ -64,12 +77,15 @@ function M.register(info)
 
       ---@type Plugin.lsp.keymap | nil
       local keys = require('lib.kmap').load_cfg('plugins.lsp')
-      local opts = { 'noremap' }
+      ---@type Kmap.opts
+      local opts = { 'silent' }
+
       local on_attach = function(client, buf)
         if not keys then return end
         kmap.nraw(keys.declaration, vim.lsp.buf.declaration, opts, buf)
         kmap.nraw(keys.definition, vim.lsp.buf.definition, opts, buf)
         kmap.nraw(keys.references, vim.lsp.buf.references, opts, buf)
+        kmap.nraw(keys.implementation, vim.lsp.buf.implementation, opts, buf)
         kmap.nraw(keys.hover, vim.lsp.buf.hover, opts, buf)
         kmap.nraw(keys.help, vim.lsp.buf.signature_help, opts, buf)
         -- action
@@ -77,15 +93,14 @@ function M.register(info)
         kmap.nraw(keys.formatting, vim.lsp.buf.formatting, opts, buf)
       end
 
-      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
       local lspconfig = require('lspconfig')
       for _, lsp in pairs(servers) do
-        lspconfig[lsp].setup({
+        lspconfig[lsp].setup(vim.tbl_extend('keep', utils.or_(cfgs[lsp], {}), {
           on_attach = on_attach,
-          settings = settings[lsp],
-          capabilities = capabilities
-        })
+          capabilities = capabilities,
+        }))
       end
     end
   }

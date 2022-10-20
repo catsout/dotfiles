@@ -21,8 +21,8 @@ function M.setup(info)
   local kmap = require('lib.kmap').domap
   ---@type Plugin.nvim-tree.keymap
   local keys = info.keymap
-  kmap.ncmd(keys.toggle, 'NvimTreeToggle', { 'noremap' })
-  kmap.ncmd(keys.refresh, 'NvimTreeRefresh', { 'noremap' })
+  kmap.ncmd(keys.toggle, 'NvimTreeToggle')
+  kmap.ncmd(keys.refresh, 'NvimTreeRefresh')
 end
 
 function M.register(info)

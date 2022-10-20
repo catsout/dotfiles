@@ -1,4 +1,5 @@
 [Appearance]
+AntiAliasFonts=true
 BoldIntense=true
 ColorScheme=nightfox
 Font=Consolas,12,-1,5,50,0,0,0,0,0

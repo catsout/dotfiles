@@ -8,13 +8,21 @@ function M.ver_runtime()
   return vim.fn.stdpath('config') .. '/ver/' .. vserion_str()
 end
 
+---@generic Ta, Tb
+---@param a `Ta`
+---@param b `Tb`
+---@return Ta|Tb
+function M.or_(a, b)
+  if a then return a else return b end
+end
+
 function M.dirname(str)
-	if str:match(".-/.-") then
-		local name = string.gsub(str, "(.*/)(.*)", "%1")
-		return name
-	else
-		return ''
-	end
+  if str:match(".-/.-") then
+    local name = string.gsub(str, "(.*/)(.*)", "%1")
+    return name
+  else
+    return ''
+  end
 end
 
 function M.mpack_dump(path, obj)
@@ -34,10 +42,8 @@ function M.mpack_load(path)
   return nil
 end
 
-
 function M.join_paths(...)
   return vim.fs.normalize(table.concat({ ... }, '/'))
 end
-
 
 return M;

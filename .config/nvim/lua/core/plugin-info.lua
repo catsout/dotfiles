@@ -1,8 +1,9 @@
 local M = {}
 
 M.infos = {
-  nightfox   = require('plugins.color.nightfox').info(),
+  nightfox = require('plugins.color.nightfox').info(),
 
+  notify     = require('plugins.nvim-notify').info(),
   lsp        = require('plugins.lsp').info(),
   cmp        = require('plugins.nvim-cmp').info(),
   ts         = require('plugins.treesitter').info(),

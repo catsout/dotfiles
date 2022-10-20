@@ -29,6 +29,7 @@ vim.opt.termguicolors = true
 vim.cmd([[
 ]])
 
+vim.opt.runtimepath:prepend(vim.fn.stdpath('config') .. '/nix')
 
 -- plugin and keymap
 local utils = require('lib.utils')

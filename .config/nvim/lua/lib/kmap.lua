@@ -1,12 +1,34 @@
+---@alias Kmap.opt
+---| 'remap' # make the mapping recursive
+---| 'nowait' # not wait for more characters to be typed, for multimatch
+---| 'silent' # not be echoed on the command line
+---| 'script' #
+---| 'expr' # the {lhs} is an expression
+---| 'unique' # fail if the mapping or abbreviation already exists
+
+---@alias Kmap.opts Kmap.opt[]
+
+---@alias MapFn fun(lhs: Key, rhs: any, opts: Kmap.opts|nil, buf: integer|boolean|nil)
+
+---@return table<string, MapFn>
 local function gen_keymap()
   local function gen_opts(opts, buf)
-    local _opts = {}
+    local _opts = {
+      remap  = false,
+      nowait = false,
+      silent = false,
+      script = false,
+      expr   = false,
+      unique = false,
+    }
+    if not opts then opts = {} end
     for _, k in pairs(opts) do _opts[k] = true end
-    _opts['buffer'] = buf
+    if buf then _opts['buffer'] = buf end
     return _opts
   end
 
   local function gen_setkey_func(mode, map_rhs)
+    ---@type MapFn
     return function(lhs, rhs, opts, buf)
       if not lhs then return end
       if not vim.tbl_islist(lhs) then lhs = { lhs } end
@@ -51,7 +73,6 @@ local utils = require('lib.utils')
 local keymap_path = vim.fn.stdpath('cache') .. '/keymap/'
 
 M.domap = gen_keymap()
-
 
 ---@param name string
 ---@param maps table<string, Array<string>>
