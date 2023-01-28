@@ -25,12 +25,8 @@ if [ ! -z "$WSL_DISTRO_NAME" ];then
 	[[ "$(genie -r)" != "stopped" ]] || genie -i
 fi
 
-NIX_SH=$HOME/.nix-profile/etc/profile.d/nix.sh
-if [ -e "$NIX_SH"];then
-    . "$NIX_SH"
-fi
 
-#export GST_VAAPI_ALL_DRIVERS=1
+export GST_VAAPI_ALL_DRIVERS=1
 export QT_XCB_GL_INTEGRATION=xcb_egl
 export QT_LOGGING_RULES='xdg-desktop*.debug=true;xdp-kde*.debug=true'
 #XDG
@@ -152,10 +148,21 @@ export MCHRDIR=/opt/chroot
 #export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+
+# nix
+NIX_SH=$HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -e "$NIX_SH" ];then
+    . "$NIX_SH"
+fi
+NIX_HM=$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+if [ -e "$NIX_HM" ];then
+    export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
+    . "$NIX_HM"
+fi
+
+# bat
 if [ -x "$(command -v bat)" ];then
 	export MANPAGER='sh -c "col -bx | bat -pl man --theme=Monokai\ Extended"'
 	export MANROFFOPT='-c'
 fi
 
-export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels${NIX_PATH:+:$NIX_PATH}
-. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"

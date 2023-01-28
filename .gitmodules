@@ -50,3 +50,6 @@
 [submodule ".local/share/nvim/site/pack/packer/start/packer.nvim"]
 	path = .var/app/io.neovim.nvim/data/nvim/site/pack/packer/start/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim.git
+[submodule ".local/share/fcitx5/themes/FluentDark-fcitx5"]
+	path = .local/share/fcitx5/git/FluentDark-fcitx5
+	url = https://github.com/Reverier-Xu/FluentDark-fcitx5.git

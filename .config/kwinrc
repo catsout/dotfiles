@@ -20,8 +20,8 @@ Transform=normal
 
 [NightColor]
 Active=true
-LatitudeAuto=1.3078
-LongitudeAuto=103.6818
+LatitudeAuto=22.2578
+LongitudeAuto=114.1657
 NightTemperature=4700
 
 [Plugins]

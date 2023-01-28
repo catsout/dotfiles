@@ -1,1 +1,2 @@
-[Session Bus Policy]
+[Context]
+filesystems=xdg-config/cookies

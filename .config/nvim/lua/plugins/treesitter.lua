@@ -31,12 +31,12 @@ function M.register()
         auto_install = true,
 
         -- List of parsers to ignore installing (for "all")
-        ignore_install = {},
+        ignore_install = {'meson'},
 
         highlight = {
           enable = true,
           -- NOTE: these are the names of the parsers and not the filetype.
-          disable = { "c", "rust" },
+          disable = { "c", "rust", "meson" },
 
           -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
           -- Instead of true it can also be a list of languages

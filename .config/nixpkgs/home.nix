@@ -20,11 +20,33 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.packages = [
-    pkgs.cmake-language-server
-    pkgs.nil
-    pkgs.tree-sitter
-    pkgs.neovim
+
+  home.packages = with pkgs; [
+    flutter
+    nodejs
+    screen
+    cmake-language-server
+    nil
+    tree-sitter
+    neovim
+    hugo
+    clash
+    neofetch
+    nmap
+    strace
+    go
+    tokei
+    unrar
+    meson
+    rust-analyzer
+    patchelf
+    crunch
+
+    poetry
+    
+    (rust-bin.stable.latest.default.override {
+      extensions = [ "rust-src" ];
+    })
   ];
 
   xdg.configFile."nvim/nix/parser".source = "${ts_parsers}";

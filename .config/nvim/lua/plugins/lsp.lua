@@ -35,7 +35,7 @@ function M.register(info)
 
     config = function()
       local utils = require('lib.utils')
-      local servers = { 'clangd', 'sumneko_lua', 'cmake', 'pyright', 'yamlls', 'nil_ls' }
+      local servers = { 'clangd', 'sumneko_lua', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls' , 'rust_analyzer' }
       local cfgs = {
         sumneko_lua = {
           settings = {
