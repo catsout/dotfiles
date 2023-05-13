@@ -1,6 +1,6 @@
 [Groups/0]
 # Group Name
-Name=Default
+Name=cn
 # Layout
 Default Layout=us
 # Default Input Method
@@ -8,13 +8,19 @@ DefaultIM=keyboard-us
 
 [Groups/0/Items/0]
 # Name
+Name=shuangpin
+# Layout
+Layout=
+
+[Groups/0/Items/1]
+# Name
 Name=keyboard-us
 # Layout
 Layout=
 
 [Groups/1]
 # Group Name
-Name=cn
+Name=Default
 # Layout
 Default Layout=us
 # Default Input Method
@@ -22,17 +28,11 @@ DefaultIM=keyboard-us
 
 [Groups/1/Items/0]
 # Name
-Name=shuangpin
-# Layout
-Layout=
-
-[Groups/1/Items/1]
-# Name
 Name=keyboard-us
 # Layout
 Layout=
 
 [GroupOrder]
-0=cn
-1=Default
+0=Default
+1=cn
 
