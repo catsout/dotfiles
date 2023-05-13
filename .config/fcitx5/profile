@@ -18,15 +18,21 @@ Name=cn
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=pinyin
+DefaultIM=keyboard-us
 
 [Groups/1/Items/0]
 # Name
-Name=pinyin
+Name=shuangpin
+# Layout
+Layout=
+
+[Groups/1/Items/1]
+# Name
+Name=keyboard-us
 # Layout
 Layout=
 
 [GroupOrder]
-0=Default
-1=cn
+0=cn
+1=Default
 

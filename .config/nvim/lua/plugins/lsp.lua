@@ -10,7 +10,6 @@ local M = {}
 ---@field formatting  Array<string>
 ---@field implementation Array<string>
 
-
 function M.info()
   return {
     name = 'nvim-lspconfig',
@@ -35,8 +34,12 @@ function M.register(info)
 
     config = function()
       local utils = require('lib.utils')
-      local servers = { 'clangd', 'sumneko_lua', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls' , 'rust_analyzer' }
+      local servers = { 'tsserver', 'clangd', 'sumneko_lua', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls',
+        'rust_analyzer' }
       local cfgs = {
+        qmlls = {
+          filetypes = { 'qmljs', 'qml' }
+        },
         sumneko_lua = {
           settings = {
             Lua = {
@@ -80,6 +83,10 @@ function M.register(info)
       ---@type Kmap.opts
       local opts = { 'silent' }
 
+      local format = function()
+        vim.lsp.buf.format { async = true }
+      end
+
       local on_attach = function(client, buf)
         if not keys then return end
         kmap.nraw(keys.declaration, vim.lsp.buf.declaration, opts, buf)
@@ -90,7 +97,7 @@ function M.register(info)
         kmap.nraw(keys.help, vim.lsp.buf.signature_help, opts, buf)
         -- action
         kmap.nraw(keys.rename, vim.lsp.buf.rename, opts, buf)
-        kmap.nraw(keys.formatting, vim.lsp.buf.formatting, opts, buf)
+        kmap.nraw(keys.formatting, format, opts, buf)
       end
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+repo=build/flatpak-repo
+state=build/flatpak-builder
+target=build/flatpak-target
+
+flatpak-builder --user --ccache --force-clean --disable-updates --repo=$repo --state-dir=$state $target "$@"

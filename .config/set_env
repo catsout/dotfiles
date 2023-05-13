@@ -41,6 +41,9 @@ fi
 
 mkdir -p $XDG_CONFIG_HOME
 
+#cmake
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
 #vscode
 export FLATPAK_ENABLE_SDK_EXT='*'
 

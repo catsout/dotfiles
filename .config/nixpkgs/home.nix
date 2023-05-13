@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let 
- ts_parsers = pkgs.tree-sitter.withPlugins (_: pkgs.tree-sitter.allGrammars);
+ ts_parsers = "";
 in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -28,7 +28,6 @@ in {
     cmake-language-server
     nil
     tree-sitter
-    neovim
     hugo
     clash
     neofetch
@@ -41,13 +40,35 @@ in {
     rust-analyzer
     patchelf
     crunch
+    openjdk17
+
+    nodePackages.typescript-language-server
 
     poetry
-    
+    bear
+
+    (neovim.override {
+      vimAlias = true;
+      extraMakeWrapperArgs = "--add-flags '-u ${config.xdg.configHome}/nvim/init.vim'";
+      configure = {
+        packages.myPlugins = with pkgs.vimPlugins; {
+          start = [
+            (nvim-treesitter.withPlugins (
+              plugins: with plugins; [ 
+                bash nix lua
+                c cpp java rust
+                python javascript scheme
+                json toml yaml 
+             ]
+            ))
+          ];
+        };
+      };
+    })
     (rust-bin.stable.latest.default.override {
       extensions = [ "rust-src" ];
     })
   ];
 
-  xdg.configFile."nvim/nix/parser".source = "${ts_parsers}";
+  # xdg.configFile."nvim/nix/parser".source = "${ts_parsers}";
 }

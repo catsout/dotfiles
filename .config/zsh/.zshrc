@@ -1,9 +1,9 @@
 # hash shortcut
+hash -d zdot=$ZDOTDIR
 hash -d config=$XDG_CONFIG_HOME
 hash -d cache=$XDG_CACHE_HOME
 hash -d data=$XDG_DATA_HOME
 hash -d state=$XDG_STATE_HOME
-hash -d zdot=$ZDOTDIR
 
 # fpath, completions, functions
 fpath=(
@@ -11,8 +11,8 @@ fpath=(
     ~zdot/functions
     $fpath
 )
-  # lazy load functions
-  #autoload -Uz ~zdot/functions/*(:t)
+# lazy load functions
+#autoload -Uz ~zdot/functions/*(:t)
 
 # misc
 setopt auto_cd
@@ -21,13 +21,7 @@ setopt pushd_ignore_dups
 
 # hist
 setopt appendhistory nomatch
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
 setopt share_history
-HISTSIZE=5000
-SAVEHIST=10000
 HISTFILE=~state/zsh/history
 
 # rm * silent
@@ -41,8 +35,11 @@ if [[ -r "~cache/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "~cache/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+autoload -Uz compinit 
+compinit
+#bashcompinit
+
 # plugin
-# source $XDG_CONFIG_HOME/zsh/antigenrc
 source ~zdot/zgenom/zgen.zsh
 if ! zgenom saved; then
     echo "Creating a zgenom save"
@@ -52,13 +49,16 @@ if ! zgenom saved; then
 
 	zgenom load romkatv/powerlevel10k powerlevel10k
 	zgenom load zdharma-continuum/fast-syntax-highlighting
+    zgenom load 3v1n0/zsh-bash-completions-fallback
 
 	zgenom ohmyzsh lib/clipboard.zsh
+	zgenom ohmyzsh lib/history.zsh
 	zgenom ohmyzsh plugins/extract
+	zgenom ohmyzsh plugins/cp
+    zgenom ohmyzsh plugins/z
 
 	zgenom save
 fi
-
 
 autoload -U promptinit run-help colors 
 promptinit
@@ -66,7 +66,10 @@ colors
 alias help=run-help
 alias ls='ls --color=tty'
 
-#completion
+# ------ completion -------
+setopt completealiases
+#setopt correctall
+
 #export LSCOLORS="Gxfxcxdxbxegedabagacad"
 [[ -z "$LS_COLORS" ]] && \
 	(( $+commands[dircolors] )) && eval "$(dircolors -b)" 
@@ -78,13 +81,6 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 
 ## shift tab revese list
 bindkey '^[[Z' reverse-menu-complete
-
-setopt completealiases
-autoload -U +X bashcompinit && bashcompinit
-compdef nvr=exec
-
-# correct from completion
-#setopt correctall
 
 # refresh right prompt
 # setopt transient_rprompt

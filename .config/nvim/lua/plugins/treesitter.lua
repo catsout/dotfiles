@@ -17,18 +17,19 @@ function M.register()
     config = function()
       require('nvim-treesitter.configs').setup {
         -- A list of parser names, or "all"
-        ensure_installed = {
-          'bash', 'lua', 'query', 'nix',
-          'c', 'cpp', 'rust', 'java',
-          'python', 'scheme', 'javascript',
-          'yaml', 'json', 'toml'
-        },
+        
+       -- ensure_installed = {
+       --   'bash', 'lua', 'query', 'nix',
+       --   'c', 'cpp', 'rust', 'java',
+       --   'python', 'scheme', 'javascript',
+       --   'yaml', 'json', 'toml'
+       -- },
 
         parser_install_dir = vim.fn.stdpath('data') .. '/treesitter',
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = true,
-        auto_install = true,
+        auto_install = false,
 
         -- List of parsers to ignore installing (for "all")
         ignore_install = {'meson'},
