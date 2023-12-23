@@ -35,10 +35,16 @@ padding=4
 [Tiling][0345f2cb-31a1-580b-aa9c-2c1d2210a3e0]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
+[Tiling][0bc2b5db-1e18-53d5-9071-9519298f1adc]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
 [Tiling][39c9a117-cc38-5721-b874-aea746434bc0]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][60bccb64-a4e9-5ebc-8b7f-fa6d2a019fe7]
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][6aff78eb-0757-5aae-aba4-e3d2c144c043]
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][857d3b6d-1346-5a25-b8f6-30b6f44dc5c1]
@@ -61,7 +67,7 @@ InputMethod[$e]=/usr/share/applications/org.fcitx.Fcitx5.desktop
 VirtualKeyboardEnabled=true
 
 [Xwayland]
-Scale=1.25
+Scale=1
 
 [org.kde.kdecoration2]
 BorderSize=None

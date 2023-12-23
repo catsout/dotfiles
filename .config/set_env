@@ -131,7 +131,7 @@ export RUSTUP_HOME=$MY_DATA_HOME/rustup
 
 #Go
 export GOPATH=$MY_DATA_HOME/go
-export GOROOT=$GOPATH/sdk
+#export GOROOT=$GOPATH/sdk
 APPEND_PATH $GOPATH/bin
 
 #conan
@@ -169,3 +169,8 @@ if [ -x "$(command -v bat)" ];then
 	export MANROFFOPT='-c'
 fi
 
+#if [[ $TERM_PROGRAM = 'vscode' ]]; then
+#    export DISPLAY=:0
+#    export WAYLAND_DISPLAY=wayland-0
+#    export XDG_RUNTIME_DIR=/run/user/1000
+#fi

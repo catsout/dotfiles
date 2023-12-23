@@ -1,6 +1,9 @@
 [General]
 FreeFloating=true
 
+[PlasmaRunnerManager]
+migrated=true
+
 [Plugins]
 CharacterRunnerEnabled=true
 DictionaryEnabled=true

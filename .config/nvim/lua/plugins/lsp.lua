@@ -31,10 +31,9 @@ function M.register(info)
   return {
     info.fullname,
     requires = info.requires,
-
     config = function()
       local utils = require('lib.utils')
-      local servers = { 'tsserver', 'clangd', 'sumneko_lua', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls',
+      local servers = { 'tsserver', 'clangd', 'lua_ls', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls',
         'rust_analyzer' }
       local cfgs = {
         qmlls = {
@@ -102,7 +101,9 @@ function M.register(info)
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+
       local lspconfig = require('lspconfig')
+
       for _, lsp in pairs(servers) do
         lspconfig[lsp].setup(vim.tbl_extend('keep', utils.or_(cfgs[lsp], {}), {
           on_attach = on_attach,

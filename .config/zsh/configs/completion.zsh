@@ -3,14 +3,14 @@ autoload -Uz compinit; compinit
 
 [[ -z "$LS_COLORS" ]] && (( $+commands[dircolors] )) && eval "$(dircolors -b)" 
 setopt completealiases
-setopt correctall
+#setopt correctall
 
 # misc
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "~cache/zsh/.zcompcache"
+zstyle ':completion:*' cache-path ~cache/zsh/.zcompcache
 zstyle ':completion:*' squeeze-slashes true
 
 # file
