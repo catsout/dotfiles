@@ -1,8 +1,11 @@
 -- basics
 vim.cmd('syntax on')
+vim.cmd('filetype on')
 vim.cmd('filetype plugin indent on')
+
 vim.opt.number         = true
 vim.opt.relativenumber = false
+vim.opt.mouse = 'nv'
 
 vim.opt.shiftround = true
 vim.opt.updatetime = 100
@@ -12,13 +15,13 @@ vim.opt.ignorecase = true
 vim.opt.smartcase  = true
 
 -- auto indent, other auto-intend-method is used through builin indent plugin
-vim.opt.autoindent  = false -- uses the indent from the previous line
+vim.opt.autoindent  = true -- uses the indent from the previous line
 vim.opt.smartindent = false -- like 'autoindent' but also recognizes some C syntax
 
 -- tabs
 vim.opt.tabstop     = 4
-vim.opt.softtabstop = -1 -- keep same as shiftwidth
 vim.opt.shiftwidth  = 4
+vim.opt.softtabstop = -1 -- keep same as shiftwidth
 vim.opt.expandtab   = true
 
 -- theme

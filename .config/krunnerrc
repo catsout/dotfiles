@@ -14,7 +14,7 @@ appstreamEnabled=true
 baloosearchEnabled=true
 bookmarksEnabled=true
 browserhistoryEnabled=true
-browsertabsEnabled=true
+browsertabsEnabled=false
 calculatorEnabled=true
 desktopsessionsEnabled=true
 katesessionsEnabled=true
@@ -29,7 +29,10 @@ placesEnabled=true
 plasma-desktopEnabled=true
 recentdocumentsEnabled=false
 servicesEnabled=true
-shellEnabled=false
+shellEnabled=true
 unitconverterEnabled=true
 webshortcutsEnabled=true
 windowsEnabled=true
+
+[Plugins][Favorites]
+plugins=krunner_services

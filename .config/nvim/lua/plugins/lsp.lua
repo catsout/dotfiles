@@ -33,13 +33,14 @@ function M.register(info)
     requires = info.requires,
     config = function()
       local utils = require('lib.utils')
-      local servers = { 'tsserver', 'clangd', 'lua_ls', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls',
-        'rust_analyzer' }
+       
+      local servers = {'ts_ls', 'clangd', 'lua_ls', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls',
+        'rust_analyzer', 'pyright' }
       local cfgs = {
         qmlls = {
           filetypes = { 'qmljs', 'qml' }
         },
-        sumneko_lua = {
+        lua_ls = {
           settings = {
             Lua = {
               runtime = {
@@ -59,7 +60,13 @@ function M.register(info)
             },
           },
         },
-
+        nil_ls = {
+          settings = {
+            ["nil"] = {
+                formatting = {command = {"nixfmt"}}
+            }
+          }
+        },
         yamlls = {
           settings = {
             redhat = {

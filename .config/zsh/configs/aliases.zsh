@@ -14,7 +14,6 @@ alias frun='flatpak run'
 alias vi='nvim'
 alias vim='nvim'
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
 alias stow='stow -v'
 alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
 alias hiostat='iostat -N --human --pretty'
@@ -24,3 +23,11 @@ alias external-data-checker='flatpak run --filesystem=`pwd` org.flathub.flatpak-
 alias pyenv='python3 -m venv --system-site-packages --upgrade --upgrade-deps'
 alias git_wip='GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_rsa.wip -o IdentitiesOnly=yes" git'
 alias ip='ip -c'
+alias butane='podman run --rm --interactive       \
+              --security-opt label=disable        \
+              --volume ${PWD}:/pwd --workdir /pwd \
+              quay.io/coreos/butane:release'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+alias yt-dlp-audio='yt-dlp -f bestaudio --extract-audio --audio-quality 0 --embed-thumbnail --embed-metadata'
+
+alias git_wip_config='git config user.name hypengw && git config user.email hypengwip@gmail.com'

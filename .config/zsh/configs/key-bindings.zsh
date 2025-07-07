@@ -26,3 +26,5 @@ bindkey "${key[Up]}"   history-substring-search-up
 bindkey "${key[Down]}" history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down

@@ -1,6 +1,6 @@
 [Groups/0]
 # Group Name
-Name=cn
+Name=Default
 # Layout
 Default Layout=us
 # Default Input Method
@@ -8,27 +8,27 @@ DefaultIM=keyboard-us
 
 [Groups/0/Items/0]
 # Name
-Name=pinyin
-# Layout
-Layout=
-
-[Groups/0/Items/1]
-# Name
 Name=keyboard-us
 # Layout
 Layout=
 
 [Groups/1]
 # Group Name
-Name=Default
+Name=cn
 # Layout
 Default Layout=us
 # Default Input Method
-DefaultIM=keyboard-us
+DefaultIM=pinyin
 
 [Groups/1/Items/0]
 # Name
 Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/1/Items/1]
+# Name
+Name=pinyin
 # Layout
 Layout=
 

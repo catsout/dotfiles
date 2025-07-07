@@ -9,14 +9,15 @@ function INSERT_PATH {
 	[ $? -eq 0 ] || export PATH="$1:$PATH"
 }
 
+
+if [ ! -z $FLATPAK_ID ];then
+	export PS1="[📦 $FLATPAK_ID \W]\$ "
+fi
+
 if [ ! -z $ENV_HOME_LOADED ];then
 	return
 else
 	export ENV_HOME_LOADED=1
-fi
-
-if [ ! -z $FLATPAK_ID ];then
-	export PS1="[📦 $FLATPAK_ID \W]\$ "
 fi
 
 if [ ! -z "$WSL_DISTRO_NAME" ];then
@@ -41,8 +42,13 @@ fi
 
 mkdir -p $XDG_CONFIG_HOME
 
+export ZES_ENABLE_SYSMAN=1
+
 #cmake
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
+
+#export FLATPAK_GL_DRIVERS=mesa-git
 
 #vscode
 export FLATPAK_ENABLE_SDK_EXT='*'
@@ -61,7 +67,6 @@ MY_STATE_HOME=$HOME/.local/state
 
 #
 APPEND_PATH /etc/ostree-bin
-INSERT_PATH $HOME/.local/bin
 export SSH_KEY_PATH=~/.ssh/rsa_id
 export DEFAULT_USER=`whoami`
 export EDITOR=nvim
@@ -106,7 +111,7 @@ export DXVK_STATE_CACHE_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_CONFIG_FILE=/home/out/.config/dxvk/dxvk.conf
 export DXVK_LOG_PATH=/home/out/Sync/.cache/dxvk
 #export DXVK_HUD=fps
-export DXVK_FRAME_RATE=60
+#export DXVK_FRAME_RATE=60
 #export DXVK_FILTER_DEVICE_NAME=Intel
 
 #ANDORID
@@ -127,7 +132,7 @@ export GTK2_RC_FILES=$MY_CONFIG_HOME/gtk-2.0/gtkrc
 #Cargo
 export CARGO_HOME=$MY_DATA_HOME/cargo
 export RUSTUP_HOME=$MY_DATA_HOME/rustup
-# APPEND_PATH $CARGO_HOME/bin
+APPEND_PATH $CARGO_HOME/bin
 
 #Go
 export GOPATH=$MY_DATA_HOME/go
@@ -142,6 +147,12 @@ export GRADLE_USER_HOME=$MY_DATA_HOME/gradle
 export FFMPEG_DATADIR=$MY_CONFIG_HOME/ffmpeg
 #nv
 export CUDA_CACHE_PATH=$MY_CONFIG_HOME/nv
+#dotnet
+export DOTNET_CLI_HOME=$MY_DATA_HOME/dotnet
+
+#.z
+export _Z_DATA=$MY_DATA_HOME/z
+
 
 export MCHRDIR=/opt/chroot
 #export PATH=$PATH:/usr/lib/dart/bin
@@ -151,6 +162,9 @@ export MCHRDIR=/opt/chroot
 #export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+export LUA_PATH="${LUA_PATH:+${LUA_PATH}:}$MY_DATA_HOME/luarocks/share/lua/5.4/?.lua;$MY_DATA_HOME/luarocks/share/lua/5.4/?/init.lua;"
+
+export DOTNET_ROOT=$MY_STATE_HOME/dotnet
 
 # nix
 NIX_SH=$HOME/.nix-profile/etc/profile.d/nix.sh
@@ -163,6 +177,8 @@ if [ -e "$NIX_HM" ];then
     . "$NIX_HM"
 fi
 
+export STACK_XDG=1
+
 # bat
 if [ -x "$(command -v bat)" ];then
 	export MANPAGER='sh -c "col -bx | bat -pl man --theme=Monokai\ Extended"'
@@ -174,3 +190,5 @@ fi
 #    export WAYLAND_DISPLAY=wayland-0
 #    export XDG_RUNTIME_DIR=/run/user/1000
 #fi
+
+INSERT_PATH $HOME/.local/bin

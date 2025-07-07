@@ -31,7 +31,7 @@ local function gen_keymap()
     ---@type MapFn
     return function(lhs, rhs, opts, buf)
       if not lhs then return end
-      if not vim.tbl_islist(lhs) then lhs = { lhs } end
+      if not vim.islist(lhs) then lhs = { lhs } end
       for _, l in ipairs(lhs) do
         vim.keymap.set(mode, l, map_rhs(rhs), gen_opts(opts, buf))
       end

@@ -42,7 +42,7 @@ function M.register(info)
 
         local domap = function(keys, mapping)
           if not keys then return end
-          if not vim.tbl_islist(keys) then keys = { keys } end
+          if not vim.islist(keys) then keys = { keys } end
           for _, k in ipairs(keys) do
             maps[k] = mapping
           end

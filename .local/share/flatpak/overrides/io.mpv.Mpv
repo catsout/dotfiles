@@ -1,2 +1,2 @@
 [Context]
-filesystems=xdg-config/cookies
+filesystems=~/.var/app/com.valvesoftware.Steam;xdg-config/cookies

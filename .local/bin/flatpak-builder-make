@@ -1,7 +1,26 @@
 #!/bin/bash
 
+set -e
+
 repo=build/flatpak-repo
 state=build/flatpak-builder
 target=build/flatpak-target
 
-flatpak-builder --user --ccache --force-clean --disable-updates --repo=$repo --state-dir=$state $target "$@"
+id=$(basename "$1" | sed -e "s:\.(yaml|yml)$::g" )
+
+id_file=""
+for file in "$id.yaml" "$id.yml"; do
+    if [ -f "$file" ]; then
+        id_file="$file"
+    fi
+done
+
+echo $id_file
+
+[ -n "$id_file" ] || exit 1
+
+flatpak-builder --user --ccache --force-clean --disable-updates \
+    --repo=$repo \
+    --state-dir=$state \
+    $target \
+    "$id_file"
