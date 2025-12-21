@@ -30,4 +30,4 @@ alias butane='podman run --rm --interactive       \
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 alias yt-dlp-audio='yt-dlp -f bestaudio --extract-audio --audio-quality 0 --embed-thumbnail --embed-metadata'
 
-alias git_wip_config='git config user.name hypengw && git config user.email hypengwip@gmail.com'
+alias git_wip_config='git config user.name hypengw && git config user.email hypengwip@gmail.com && git config core.sshCommand "ssh -i /var/home/out/.ssh/id_rsa.wip -o IdentitiesOnly=yes"'

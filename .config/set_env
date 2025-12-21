@@ -12,12 +12,17 @@ function INSERT_PATH {
 
 if [ ! -z $FLATPAK_ID ];then
 	export PS1="[📦 $FLATPAK_ID \W]\$ "
+    INSERT_PATH $HOME/.local/bin
 fi
 
 if [ ! -z $ENV_HOME_LOADED ];then
 	return
 else
 	export ENV_HOME_LOADED=1
+fi
+
+if [ ! -z $CONDA_EXE ];then
+    return
 fi
 
 if [ ! -z "$WSL_DISTRO_NAME" ];then
@@ -133,6 +138,7 @@ export GTK2_RC_FILES=$MY_CONFIG_HOME/gtk-2.0/gtkrc
 export CARGO_HOME=$MY_DATA_HOME/cargo
 export RUSTUP_HOME=$MY_DATA_HOME/rustup
 APPEND_PATH $CARGO_HOME/bin
+#export RUST_SRC_PATH="$HOME/.nix-profile/lib/rustlib/src/rust/src"
 
 #Go
 export GOPATH=$MY_DATA_HOME/go

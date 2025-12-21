@@ -9,6 +9,33 @@ Switch to Last-Used Keyboard Layout=Meta+Alt+L,Meta+Alt+L,Switch to Last-Used Ke
 Switch to Next Keyboard Layout=Ctrl+Alt+K,Meta+Alt+K,Switch to Next Keyboard Layout
 _k_friendly_name=Keyboard Layout Switcher
 
+[Strawberry]
+_k_friendly_name=Strawberry
+next_track=none,none,Next track
+play_pause=none,none,Play/Pause
+prev_track=none,none,Previous track
+stop=none,none,Stop
+
+[com.google.Chrome]
+AB4F23F97F1D56F361B93AA440B63768-clipCompletePage=none,none,Clip complete page (uses last selected notebook)
+AB4F23F97F1D56F361B93AA440B63768-clipCompletePageHtml=none,none,Clip complete page (HTML) (uses last selected notebook)
+AB4F23F97F1D56F361B93AA440B63768-clipSelection=none,none,Clip selection (uses last selected notebook)
+AB4F23F97F1D56F361B93AA440B63768-clipSimplifiedPage=none,none,Clip simplified page (uses last selected notebook)
+AB4F23F97F1D56F361B93AA440B63768-clipUrl=none,none,Clip url (uses last selected notebook)
+_k_friendly_name=Google Chrome
+
+[com.microsoft.Edge]
+929E0073366AC85166FEF335698BD164-translatePage=none,none,Translate this page
+929E0073366AC85166FEF335698BD164-translateSelectedText=none,none,Translate selected text
+94D703768C61CF9478EA973DB7D3AB27-launch-element-picker=none,none,Enter element picker mode
+94D703768C61CF9478EA973DB7D3AB27-launch-element-zapper=none,none,Enter element zapper mode
+94D703768C61CF9478EA973DB7D3AB27-launch-logger=none,none,Open the logger
+94D703768C61CF9478EA973DB7D3AB27-open-dashboard=none,none,Open the dashboard
+94D703768C61CF9478EA973DB7D3AB27-relax-blocking-mode=none,none,Relax blocking mode
+94D703768C61CF9478EA973DB7D3AB27-toggle-cosmetic-filtering=none,none,Toggle cosmetic filtering
+94D703768C61CF9478EA973DB7D3AB27-toggle-javascript=none,none,Toggle JavaScript
+_k_friendly_name=Microsoft Edge
+
 [kaccess]
 Toggle Screen Reader On and Off=Meta+Alt+S,Meta+Alt+S,Toggle Screen Reader On and Off
 _k_friendly_name=Accessibility
@@ -147,7 +174,7 @@ Window One Screen Down=none,,Move Window One Screen Down
 Window One Screen Up=none,,Move Window One Screen Up
 Window One Screen to the Left=none,,Move Window One Screen to the Left
 Window One Screen to the Right=none,,Move Window One Screen to the Right
-Window Operations Menu=Alt+F3,Alt+F3,Window Operations Menu
+Window Operations Menu=Alt+F3,Alt+F3,Window Menu
 Window Pack Down=none,,Move Window Down
 Window Pack Left=none,,Move Window Left
 Window Pack Right=none,,Move Window Right
@@ -162,7 +189,7 @@ Window Quick Tile Top Left=none,,Quick Tile Window to the Top Left
 Window Quick Tile Top Right=none,,Quick Tile Window to the Top Right
 Window Raise=none,,Raise Window
 Window Resize=none,,Resize Window
-Window Shade=none,,Shade Window
+Window Shade=none,none,Shade Window
 Window Shrink Horizontal=none,,Shrink Window Horizontally
 Window Shrink Vertical=none,,Shrink Window Vertically
 Window to Desktop 1=none,,Window to Desktop 1
@@ -232,6 +259,7 @@ _k_friendly_name=Power Management
 powerProfile=Battery\tMeta+B,Battery\tMeta+B,Switch Power Profile
 
 [plasmashell]
+Slideshow Wallpaper Next Image=none,,Next Wallpaper Image
 _k_friendly_name=plasmashell
 activate application launcher=Meta,Meta\tAlt+F1,Activate Application Launcher
 activate task manager entry 1=Meta+1,Meta+1,Activate Task Manager Entry 1
