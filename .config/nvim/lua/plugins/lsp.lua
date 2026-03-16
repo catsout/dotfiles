@@ -1,5 +1,5 @@
 local M = {}
-
+ 
 ---@class Plugin.lsp.keymap
 ---@field declaration Array<string>
 ---@field definition  Array<string>
@@ -9,33 +9,31 @@ local M = {}
 ---@field rename      Array<string>
 ---@field formatting  Array<string>
 ---@field implementation Array<string>
-
+ 
 function M.info()
   return {
-    name = 'nvim-lspconfig',
+    name = 'mason-lspconfig.nvim',
     ---@type Plugin.lsp.keymap
     keymap = {},
     module = 'plugins.lsp',
-    fullname = 'neovim/nvim-lspconfig',
+    fullname = 'mason-org/mason-lspconfig.nvim',
     requires = {
+      'mason-org/mason.nvim',
+      'neovim/nvim-lspconfig',
       'hrsh7th/cmp-nvim-lsp',
-      'williamboman/nvim-lsp-installer'
     },
-
   }
 end
-
+ 
 function M.register(info)
   require('lib.kmap').dump_cfg(info.module, info.keymap)
-
+ 
   return {
     info.fullname,
     requires = info.requires,
     config = function()
-      local utils = require('lib.utils')
-       
-      local servers = {'ts_ls', 'clangd', 'lua_ls', 'cmake', 'pyright', 'yamlls', 'jsonls', 'nil_ls',
-        'rust_analyzer', 'pyright' }
+      require('mason').setup()
+ 
       local cfgs = {
         qmlls = {
           filetypes = { 'qmljs', 'qml' }
@@ -63,7 +61,7 @@ function M.register(info)
         nil_ls = {
           settings = {
             ["nil"] = {
-                formatting = {command = {"nixfmt"}}
+              formatting = { command = { "nixfmt" } }
             }
           }
         },
@@ -77,22 +75,18 @@ function M.register(info)
           }
         }
       }
-
-      require('nvim-lsp-installer').setup {
-        automatic_installation = true
-      }
-
+ 
       local kmap = require('lib.kmap').domap
-
+ 
       ---@type Plugin.lsp.keymap | nil
       local keys = require('lib.kmap').load_cfg('plugins.lsp')
       ---@type Kmap.opts
       local opts = { 'silent' }
-
+ 
       local format = function()
         vim.lsp.buf.format { async = true }
       end
-
+ 
       local on_attach = function(client, buf)
         if not keys then return end
         kmap.nraw(keys.declaration, vim.lsp.buf.declaration, opts, buf)
@@ -108,17 +102,33 @@ function M.register(info)
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-
-      local lspconfig = require('lspconfig')
-
-      for _, lsp in pairs(servers) do
-        lspconfig[lsp].setup(vim.tbl_extend('keep', utils.or_(cfgs[lsp], {}), {
+      local function setup_server(server_name)
+        vim.lsp.config[server_name] = vim.tbl_extend('keep', cfgs[server_name] or {}, {
           on_attach = on_attach,
           capabilities = capabilities,
-        }))
+        })
+      end
+
+
+      local auto_install = {
+        'ts_ls',  'lua_ls',
+        'pyright', 'yamlls', 'jsonls'
+      }
+      local all = vim.list_extend(vim.list_slice(auto_install), {
+        'cmake', 'clangd', 'rust_analyzer'
+      })
+ 
+      require('mason-lspconfig').setup({
+        ensure_installed = auto_install,
+        automatic_enable = all,
+        automatic_installation = true,
+      })
+
+      for _, server_name in ipairs(all) do
+        setup_server(server_name)
       end
     end
   }
 end
-
+ 
 return M

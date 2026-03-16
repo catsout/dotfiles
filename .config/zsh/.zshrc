@@ -24,8 +24,10 @@ setopt pushd_ignore_dups
 # hist
 HISTFILE=~xdg_state/zsh/history
 setopt appendhistory nomatch
+unsetopt share_history
 setopt no_share_history
 setopt hist_ignore_dups
+setopt hist_save_no_dups
 setopt hist_find_no_dups
 
 # rm * silent
